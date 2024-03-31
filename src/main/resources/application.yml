@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Server
+  datasource:
+    url: jdbc:mysql://localhost:3306/college_poi
+    username: root
+    password: xwh20040919
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+upload:
+  localPath: /D:/upload_test/
+  accessPath: /upload/
