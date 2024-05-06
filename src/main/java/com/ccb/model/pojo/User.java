@@ -1,11 +1,15 @@
 package com.ccb.model.pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ccb.model.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -13,18 +17,27 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private Integer id;
     private String name;
     private String password;
     private Integer phone;//电话号码
     private Gender gender;
 
-    private Date birthDay;
+    private Date birthday;
     private String deptName;//院系
     private String signature;//个性签名
+    private String avatar;//头像，存储图片URL
+    private String description;
 
     private List<Posting>postings;//创作的帖子
+    private Long preferenceId;
 
-    private String description;
+    @TableField(fill = FieldFill.INSERT)//记录创建时间
+    private LocalDateTime createTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 }
