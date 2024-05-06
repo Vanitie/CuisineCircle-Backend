@@ -1,4 +1,8 @@
 package com.ccb.service;
 
-public interface PreferenceBlindBoxService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.ccb.model.pojo.Preference;
+
+
+public interface PreferenceBlindBoxService extends IService<Preference> {
 }
