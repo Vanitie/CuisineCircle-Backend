@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28d0eea-f650-464d-832b-707bf9d24592" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/mapper/DishMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Dish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/PostingComment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Preference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/RandomBlindBoxService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/RandomBlindBoxServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44/storage_v2/_src_/schema/ccb.AoABAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44/storage_v2/_src_/schema/ccb.AoABAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/DishController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PostingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Posting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Posting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +117,9 @@
       <workItem from="1713603499319" duration="1858000" />
       <workItem from="1713859735490" duration="576000" />
       <workItem from="1713927287867" duration="4393000" />
-      <workItem from="1714960806015" duration="302000" />
+      <workItem from="1714960806015" duration="2408000" />
+      <workItem from="1714993724781" duration="452000" />
+      <workItem from="1715005517752" duration="79000" />
     </task>
     <servers />
   </component>
