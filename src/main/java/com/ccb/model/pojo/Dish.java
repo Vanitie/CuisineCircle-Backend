@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,6 +20,12 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private Long id;
     private String name;//菜品名称
     private BigDecimal price;//菜品价格,使用BigDecimal避免浮点数舍入误差
+
+    //根据需求文档新增添的三个属性
+    private List<String> tags;//菜品标签
+    private Integer stars;//星级，0-10，每一级表示半颗星
+    private String navigationUrl; // 导航地址
+
     private Integer restaurant_id;
     private String image;//使用string存储图片URL，节省数据库空间
     private String description;//描述信息

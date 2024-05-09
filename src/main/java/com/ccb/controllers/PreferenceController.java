@@ -1,5 +1,4 @@
 package com.ccb.controllers;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccb.common.R;
 import com.ccb.form.UserForm;
@@ -54,4 +53,5 @@ public class PreferenceController {
 
         return R.success(preference);
     }
+
 }
