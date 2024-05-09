@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/common/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/common/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="第一次分工" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,5 +85,21 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge remote-tracking branch 'origin/prototype' into prototype&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/ccb/controllers/PreferenceController.java" />
+    <MESSAGE value="第一次分工" />
+    <option name="LAST_COMMIT_MESSAGE" value="第一次分工" />
   </component>
 </project>
