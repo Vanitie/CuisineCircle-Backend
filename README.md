@@ -8,5 +8,5 @@
 
 springboot3
 
-java21
+java20
 
