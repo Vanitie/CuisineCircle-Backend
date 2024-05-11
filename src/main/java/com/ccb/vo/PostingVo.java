@@ -1,24 +1,21 @@
-package com.ccb.model.pojo;
+package com.ccb.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.ccb.model.pojo.PostingComment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@TableName("posting")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Posting implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class PostingVo {
+
 
     private Integer id;//主键
 
@@ -31,12 +28,8 @@ public class Posting implements Serializable {
     private Long preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
-    private List<Integer> comments;//评论，新建表posting_comment
+    private List<PostingComment> comments;//评论，新建表posting_comment
 
-    @TableField(fill = FieldFill.INSERT)//记录创建时间
     private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
-
 }

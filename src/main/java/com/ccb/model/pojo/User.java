@@ -8,16 +8,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+
+
 
 @TableName("user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private Integer id;
@@ -43,4 +47,11 @@ public class User implements Serializable {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+    public void setFanUserId(Integer followerId){
+        fanUserId.add(followerId);
+    }
+    public void setFollowUserId(Integer followerId){
+        followUserId.add(followerId);
+    }
+
 }

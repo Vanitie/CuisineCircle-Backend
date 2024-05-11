@@ -59,4 +59,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         query.eq("password", password);
         return userMapper.selectOne(query);
     }
+
+    @Override
+    public User getByUserId(Integer userId){
+        return getById(userId);
+    }
+
+
 }

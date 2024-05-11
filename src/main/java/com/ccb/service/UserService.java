@@ -13,4 +13,10 @@ public interface UserService extends IService<User> {
 
     void updateMain(User user, List<Picture>pictures);
     public User getUserByNameAndPassword(String name, String password);
+
+
+    public User getByUserId(Integer userId);
+
+
+
 }
