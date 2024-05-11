@@ -1,0 +1,68 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0890a30e-7a59-4a36-8183-00a00e62b169\" name=\"更改\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/encodings.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ccb/common/R.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ccb/common/R.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2g8dD71wXhmlmvLkekrPQsRQIVd\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;prototype&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"ProtoApptication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"ccb-prototype\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.ccb.ProtoApptication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"0890a30e-7a59-4a36-8183-00a00e62b169\" name=\"更改\" comment=\"\" />\r\n      <created>1715083015450</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1715083015450</updated>\r\n      <workItem from=\"1715083016506\" duration=\"7157000\" />\r\n      <workItem from=\"1715154786670\" duration=\"49000\" />\r\n      <workItem from=\"1715154843894\" duration=\"130000\" />\r\n      <workItem from=\"1715155064730\" duration=\"4465000\" />\r\n      <workItem from=\"1715239264516\" duration=\"18000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 656cf8c45b0d382c594936f7bc1a39c109cf57cc)
++++ b/.idea/workspace.xml	(date 1715241351418)
+@@ -4,18 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d40eca9a-bff4-4c37-8e8e-7250cf450b44.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/common/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/common/R.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceBlindBoxService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" afterDir="false" />
+-    </list>
++    <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="第一次分工" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -29,6 +18,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="Aha &lt;1786480231@qq.com&gt;" />
++      </list>
++    </option>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+         <entry key="$PROJECT_DIR$" value="main" />
+@@ -91,10 +85,24 @@
+       <workItem from="1715154843894" duration="130000" />
+       <workItem from="1715155064730" duration="4465000" />
+       <workItem from="1715239264516" duration="18000" />
++      <workItem from="1715239976956" duration="696000" />
+     </task>
++    <task id="LOCAL-00001" summary="第一次分工">
++      <option name="closed" value="true" />
++      <created>1715240052266</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1715240052266</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="第一次分工" />
++    <option name="LAST_COMMIT_MESSAGE" value="第一次分工" />
++  </component>
+ </project>
+\ No newline at end of file
