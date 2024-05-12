@@ -82,7 +82,7 @@ public class PostingController {
     public R<List<PostingComment>> getCommentsForPosting(@PathVariable Integer postingId) {
         Posting posting=postingService.getPostingById(postingId);
         List<Integer>list=posting.getComments();
-        List<PostingComment>result=new ArrayList<PostingComment>();
+        List<PostingComment>result= new ArrayList<>();
         for(Integer it:list){
             result.add(postingCommentService.getPostingCommentById(it));
         }
@@ -92,7 +92,7 @@ public class PostingController {
     public R<List<PostingComment>> getCommentsForComment(@PathVariable Integer commentId) {
         PostingComment comment=postingCommentService.getPostingCommentById(commentId);
         List<Integer>list=comment.getComments();
-        List<PostingComment>result=new ArrayList<PostingComment>();
+        List<PostingComment>result= new ArrayList<>();
         for(Integer it:list){
             result.add(postingCommentService.getPostingCommentById(it));
         }
@@ -105,14 +105,14 @@ public class PostingController {
         return R.success();
     }
 
-    @PostMapping("/{postingId}/comments/{commentId}/like")
-    public R<User> likeComment(@PathVariable Integer postingId, @PathVariable Integer commentId) {
+    @PostMapping("/comments/{commentId}/like")
+    public R<User> likeComment(@PathVariable Integer commentId) {
         postingCommentService.likeComment(commentId);
         return R.success();
     }
 
-    @PostMapping("/{postingId}/comments/{commentId}/dislike")
-    public R<User> dislikeComment(@PathVariable Integer postingId, @PathVariable Integer commentId) {
+    @PostMapping("/comments/{commentId}/dislike")
+    public R<User> dislikeComment( @PathVariable Integer commentId) {
         postingCommentService.dislikeComment(commentId);
         return R.success();
     }
