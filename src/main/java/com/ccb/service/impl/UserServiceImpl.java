@@ -43,8 +43,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public void updateMain(User user, List<Picture> pictures) {
         userMapper.updateById(user);
 
-        pictureMapper.deleteByUserId(user.getId());
+
         if(pictures!=null){
+            pictureMapper.deleteByUserId(user.getId());
             for(Picture picture:pictures){
                 picture.setUserId(user.getId());
                 pictureMapper.insert((picture));
