@@ -1,16 +1,8 @@
 package com.ccb.controllers;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccb.common.R;
-import com.ccb.form.UserForm;
-import com.ccb.mapper.PreferenceMapper;
 import com.ccb.model.pojo.Preference;
-import com.ccb.model.pojo.User;
-import com.ccb.service.PreferenceBlindBoxService;
-import com.ccb.service.impl.PreferenceBlindBoxServiceImpl;
-import com.ccb.vo.Result;
-import com.ccb.vo.UserVo;
+import com.ccb.service.PreferenceService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +12,12 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/preference")
+
 public class PreferenceController {
     @Autowired
-    private PreferenceBlindBoxService preferenceService;
-
+    private PreferenceService preferenceService;
     @GetMapping("/detail")
-    public R detail(@PathVariable("id") Integer id){
+    public R<Preference> detail(@PathVariable("id") Integer id){
         log.info("preference detail:id={}",id);
         Preference preference=preferenceService.getById(id);
 
@@ -35,12 +27,13 @@ public class PreferenceController {
     @PostMapping("/add")
     public R<Preference> add(@RequestBody Preference preference){
         log.info("dish's id={}",preference.getId());
-        preferenceService.save(preference);
+        preferenceService.save(preference);//save函数可以添加数据库信息
         return R.success();
     }
 
     @DeleteMapping("/delete")
     public R<Preference> delete(@PathVariable("id") Integer id){
+
         preferenceService.removeById(id);
         return R.success();
     }
@@ -50,8 +43,12 @@ public class PreferenceController {
         log.info("edit:preference={}",preference);
 
         preferenceService.updateById(preference);
-
         return R.success(preference);
     }
+    /*
+    1、在controller实现addLikeDish(): 对preference中的private List<Integer> likeDishId增添被喜欢的dishID  String LikeDishId
+    2、实现sharePreference()
+     */
+
 
 }

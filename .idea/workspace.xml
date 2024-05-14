@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="第一次分工">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/mapper/UserDishLikesMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/UserDishLikes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Preference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Preference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
@@ -88,7 +96,8 @@
       <workItem from="1715154843894" duration="130000" />
       <workItem from="1715155064730" duration="4465000" />
       <workItem from="1715239264516" duration="18000" />
-      <workItem from="1715244108487" duration="3903000" />
+      <workItem from="1715244108487" duration="6052000" />
+      <workItem from="1715686702549" duration="5879000" />
     </task>
     <task id="LOCAL-00001" summary="第一次分工">
       <option name="closed" value="true" />

@@ -17,7 +17,6 @@ public class Preference implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-
     private BigDecimal price;//平均价格
     private Integer spicy;//辣度，0-10
     private Integer sweet;//甜度，0-10
@@ -27,5 +26,7 @@ public class Preference implements Serializable {
     private Map<String, Integer> weightedCuisinePreferences; // 加权菜系表
     private Map<String, Integer> cookingStylePreferences; // 烹饪风格偏好
     private Map<String, Integer> restaurantPreferences; // 餐厅偏好
+
+    private String LikeDishId;
 
 }
