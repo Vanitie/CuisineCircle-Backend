@@ -53,6 +53,25 @@
       <version>3.5.5</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.alibaba/dashscope-sdk-java -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>dashscope-sdk-java</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+        </exclusion>
+      </exclusions>
+      <version>2.13.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>4.1.2</version>
+    </dependency>
+
   </dependencies>
 
   <build>
