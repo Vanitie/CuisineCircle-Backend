@@ -6,6 +6,7 @@ import com.ccb.mapper.PreferenceMapper;
 import com.ccb.model.pojo.Preference;
 import com.ccb.model.pojo.User;
 import com.ccb.service.PreferenceBlindBoxService;
+import com.ccb.service.PreferenceService;
 import com.ccb.service.impl.PreferenceBlindBoxServiceImpl;
 import com.ccb.vo.Result;
 import com.ccb.vo.UserVo;
@@ -22,7 +23,7 @@ import java.util.List;
 @RequestMapping("/preference")
 public class PreferenceController {
     @Autowired
-    private PreferenceBlindBoxService preferenceService;
+    private PreferenceService preferenceService;
 
     @GetMapping("/detail")
     public R detail(@PathVariable("id") Integer id){

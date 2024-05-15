@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface PreferenceMapper extends BaseMapper<Preference> {
+    Preference selectByUserId(Integer userId);
 }
