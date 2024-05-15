@@ -21,8 +21,9 @@ public class Preference implements Serializable {
 
     private Integer id;
     private Integer userId;
-    private List<Integer> likeDishId;//之前选过的菜，并且点了喜欢
-    private List<Integer> Menus;//菜单
+    //private List<Integer> likeDishId;//之前选过的菜，并且点了喜欢 弃用
+    private Integer LikeMenu=1;//编号为1 “我喜欢的菜单”
+    private List<Map<String,Integer>> Menus;//菜单
 
     private BigDecimal price;//平均价格
     private Integer spicy;//辣度，0-10
