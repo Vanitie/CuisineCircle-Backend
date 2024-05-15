@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 @TableName("preference")
@@ -17,6 +18,7 @@ public class Preference implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    private Integer userid;//该用户的id  目前已创建selectByUserId getByUserId
     private BigDecimal price;//平均价格
     private Integer spicy;//辣度，0-10
     private Integer sweet;//甜度，0-10
@@ -27,6 +29,6 @@ public class Preference implements Serializable {
     private Map<String, Integer> cookingStylePreferences; // 烹饪风格偏好
     private Map<String, Integer> restaurantPreferences; // 餐厅偏好
 
-    private String LikeDishId;
-
+    private Long LikeMenuId=1L;
+    private List<Long> Menu;
 }

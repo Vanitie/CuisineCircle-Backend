@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0890a30e-7a59-4a36-8183-00a00e62b169" name="更改" comment="第一次分工">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/mapper/UserDishLikesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/UserDishLikes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/PreferenceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/PreferenceMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/controllers/PreferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/mapper/PreferenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/mapper/PreferenceMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Preference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/Preference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceBlindBoxServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/UserDishLikes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/model/pojo/UserDishLikes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ccb/service/impl/PreferenceServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +22,7 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -48,7 +47,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2g8dD71wXhmlmvLkekrPQsRQIVd" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,13 +58,14 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prototype&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;正在合并 prototype&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -98,6 +100,11 @@
       <workItem from="1715239264516" duration="18000" />
       <workItem from="1715244108487" duration="6052000" />
       <workItem from="1715686702549" duration="5879000" />
+      <workItem from="1715693473870" duration="11000" />
+      <workItem from="1715693492501" duration="703000" />
+      <workItem from="1715694415318" duration="313000" />
+      <workItem from="1715753763998" duration="83000" />
+      <workItem from="1715753883253" duration="3614000" />
     </task>
     <task id="LOCAL-00001" summary="第一次分工">
       <option name="closed" value="true" />

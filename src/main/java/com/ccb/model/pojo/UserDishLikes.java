@@ -8,6 +8,7 @@ import lombok.Data;
 public class UserDishLikes {
     @TableId
     private Long id;
-    private Long userId;
-    private Long dishId;
+    private Integer userId;
+    private Long menuId;
+    private Integer dishId;
 }
