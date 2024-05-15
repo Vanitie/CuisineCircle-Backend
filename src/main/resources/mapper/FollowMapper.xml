@@ -1,0 +1,22 @@
+<!-- FollowMapper.xml -->
+<mapper namespace="com.ccb.mapper.FollowMapper">
+    <!-- 查询所有关注者关注的用户ID -->
+    <select id="selectFollowIdsByFanId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT followId FROM follow WHERE fanId = #{fanId}
+    </select>
+
+    <!-- 查询所有关注某用户的关注者ID -->
+    <select id="selectFanIdsByFollowId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT fanId FROM follow WHERE followId = #{followId}
+    </select>
+
+    <!-- 添加关注关系 -->
+    <insert id="addFollow">
+        INSERT INTO follow (fanId, followId) VALUES (#{fanId}, #{followId})
+    </insert>
+
+    <!-- 删除关注关系 -->
+    <delete id="deleteFollow">
+        DELETE FROM follow WHERE fanId = #{fanId} AND followId = #{followId}
+    </delete>
+</mapper>

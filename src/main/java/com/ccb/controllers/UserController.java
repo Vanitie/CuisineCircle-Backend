@@ -3,13 +3,14 @@ package com.ccb.controllers;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccb.common.R;
 import com.ccb.form.UserForm;
-import com.ccb.mapper.UserMapper;
 import com.ccb.model.pojo.User;
 import com.ccb.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -18,12 +19,43 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    private UserMapper userMapper;
     @GetMapping("/detail/{id}")
     public R<User> detail(@PathVariable("id")Integer id){
         log.info("detail:id={}",id);
         User user=userService.getById(id);
+        return R.success(user);
+    }
+
+    //展示粉丝
+    @GetMapping("/{id}/fans")
+    public  R<List<User>> showFans(@PathVariable("id")Integer id){
+        User user=userService.getById(id);
+        List<Integer> fansIds=userService.getFansId(id);
+        List<User> fans=userService.getUsers(fansIds);
+        return R.success(fans);
+    }
+
+    //展示关注的人
+    @GetMapping("/{id}/followers")
+    public  R<List<User>> showFollowers(@PathVariable("id")Integer id){
+        List<Integer> followersIds=userService.getFollowersId(id);
+        List<User> followers=userService.getUsers(followersIds);
+        return R.success(followers);
+    }
+
+    //添加关注
+    @PostMapping("/{id}/follow/{followId}")
+    public R<User> addFollow(@PathVariable("id")Integer id,@PathVariable("followId")Integer followId){
+        userService.addFollow(id,followId);
+        User user =userService.getByUserId(id);
+        return R.success(user);
+    }
+
+    //移除关注
+    @PostMapping("/{id}/unfollow/{followId}")
+    public R<User> deleteFollow(@PathVariable("id")Integer id,@PathVariable("followId")Integer followId){
+        userService.deleteFollow(id,followId);
+        User user =userService.getByUserId(id);
         return R.success(user);
     }
 
