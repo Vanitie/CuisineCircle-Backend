@@ -14,7 +14,7 @@ public class ChatController {
     @PostMapping("/chat")//文档要求使用post请求
     public ChatResponse chat(String q){
         String url = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation";//这里看官方文档
-        String ApiKey = "sk-c3a72a1cfd52491fbdc288b24b5908c1";//ApiKey
+        String ApiKey = "";//ApiKey
 
         ChatRequest chatRequest = new ChatRequest(q);
         String json = JSONUtil.toJsonStr(chatRequest);
