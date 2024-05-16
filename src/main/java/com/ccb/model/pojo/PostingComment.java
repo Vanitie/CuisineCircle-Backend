@@ -24,13 +24,12 @@ public class PostingComment implements Serializable {
     private Integer id;
 
     private Integer postingId; // 外键，指向被评论的帖子
-    private Integer parentCommentId; // 指向父评论
+    private Integer commentId; // 指向父评论
     private String content; // 评论内容
     private Integer userId; // 外键，评论者用户ID
     private Integer likes;
-    private Integer dislikes;
-    private Boolean isSubComment; // 是否为子评论
-    private List<Integer>comments;
+
+
 
     @TableField(fill = FieldFill.INSERT)
     private Timestamp createTime; // 评论创建时间

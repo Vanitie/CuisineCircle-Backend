@@ -22,14 +22,14 @@ public class PostingVo {
 
     private Integer userId;
     private String content;
-    private List<String> pictures;//存储图片URL,新定义posting_picture表存储
+
 
     private Integer likes;//点赞数
-    private Integer dislikes;//点踩数
+
     private Long preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
-    private List<PostingComment> comments;//评论，新建表posting_comment
+
 
     private Timestamp createTime;
     private Timestamp updateTime;

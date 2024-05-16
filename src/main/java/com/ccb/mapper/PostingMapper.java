@@ -6,8 +6,10 @@ import com.ccb.model.pojo.Posting;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface PostingMapper extends BaseMapper<Posting> {
-    void updateLikes(@Param("commentId") Integer commentId, @Param("likes") Integer likes);
-    void updateDisLikes(@Param("commentId") Integer commentId, @Param("dislikes") Integer dislikes);
+
+
 }

@@ -25,14 +25,12 @@ public class Posting implements Serializable {
 
     private Integer userId;
     private String content;
-    private List<String> pictures;//存储图片URL,新定义posting_picture表存储
 
-    private Integer likes;//点赞数
-    private Integer dislikes;//点踩数
+
     private Long preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
-    private List<Integer> comments;//评论，新建表posting_comment
+
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间
     private Timestamp createTime;
