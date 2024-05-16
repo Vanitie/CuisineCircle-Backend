@@ -10,8 +10,8 @@ import java.util.List;
 public interface PreferenceService extends IService<Preference> {
     Preference getByUserId(Integer userId);
     List<Integer> getMenuDishes(Integer userId, Integer menuId);
-    void insertUserDishLike(Integer userId, Integer dishId,Integer menuId);
+    void insertUserDishLike(Integer userId, Integer dishId,Integer menuId,String menuName);
     void deleteMenu(Integer userId,Integer menuId);
-    void creatMenu(Integer userId,String MenuName);
+    void creatMenu(Integer userId,String menuName);
     void shareMenu();
 }
