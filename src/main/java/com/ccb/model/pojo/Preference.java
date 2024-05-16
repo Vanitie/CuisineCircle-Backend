@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class Preference implements Serializable {
     //private List<Integer> likeDishId;//之前选过的菜，并且点了喜欢 弃用
     private Integer LikeMenu=1;//编号为1 “我喜欢的菜单”
     private List<Map<String,Integer>> Menus;//菜单
+    private Integer MenusIndex;//MenusIndex=Menus.size()+2
 
     private BigDecimal price;//平均价格
     private Integer spicy;//辣度，0-10
@@ -35,4 +37,12 @@ public class Preference implements Serializable {
     private Map<String, Integer> cookingStylePreferences; // 烹饪风格偏好
     private Map<String, Integer> restaurantPreferences; // 餐厅偏好
 
+    /*
+    1、黑名单
+     */
+
+    public Preference(Integer MenusIndex,Preference p2){
+        BeanUtils.copyProperties(this, p2);
+        this.setMenusIndex(MenusIndex);
+    }
 }

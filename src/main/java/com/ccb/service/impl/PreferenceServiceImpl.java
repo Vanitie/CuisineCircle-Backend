@@ -25,17 +25,17 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     @Autowired
     UserDishMenuMapper userDishMenuMapper;
 
-    public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId) {
+    public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
         UserDishMenu userDishMenu = new UserDishMenu();
         userDishMenu.setUserId(userId);
         userDishMenu.setDishId(dishId);
         userDishMenu.setMenuId(menuId);
+        userDishMenu.setMenuName(menuName);
 
         userDishMenuMapper.insert(userDishMenu);
     }
 
     public Preference getByUserId(Integer userId) {
-
         return preferenceMapper.selectByUserId(userId);
     }
 
@@ -45,13 +45,14 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     }
 
     //加新菜单，菜单编号顺序从2开始递增
-    public void creatMenu(Integer userId,String MenuName) {
+    public void creatMenu(Integer userId,String menuName) {
         Preference preference = preferenceMapper.selectByUserId(userId);
+        Integer index = preference.getMenusIndex();
+        preference.setMenusIndex(index+1);
+
+        insertUserDishLike(userId,-1,index+1,menuName);//存储在关联表中初始菜单的dishId=-1
+
         List<Map<String,Integer>> copy = preference.getMenus();
-        Map<String, Integer> temp = new HashMap<>();
-        temp.put(MenuName, copy.size() - 2);
-        copy.add(temp);
-        preference.setMenus(copy);
         preferenceMapper.updateById(preference);
     }
 
@@ -71,6 +72,4 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         preference.setMenus(copy);
         preferenceMapper.updateById(preference);
     }
-
-
 }
