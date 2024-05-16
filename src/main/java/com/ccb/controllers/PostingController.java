@@ -39,14 +39,14 @@ public class PostingController {
         this.postingMapper = postingMapper;
     }
 
-    @PostMapping("/{fanId}/follow")
+    @PostMapping("postings/{fanId}/follow")
     public R<User> followBlogger(@PathVariable Integer fanId, @RequestParam("followId") Integer followId) {
         postingService.addFollow(fanId, followId);
 
         return R.success();
 
     }
-    @PostMapping("/{fanId/delete_follow}")
+    @PostMapping("/{fanId/deleteFollow}")
     public R<User> deleteBlogger(@PathVariable Integer fanId, @RequestParam("followId") Integer followId) {
         postingService.deleteFollow(fanId, followId);
         return R.success();
@@ -57,26 +57,26 @@ public class PostingController {
         return R.success();
     }
 
-    @PostMapping("/{postingId}/like")
-    public R<User> likePosting(@PathVariable Integer postingId, @RequestParam("user_id")Integer user_id) {
-        likeMapper.addLike_posting(postingId,user_id);
+    @PostMapping("/postings/{postingId}/like")
+    public R<User> likePosting(@PathVariable Integer postingId, @RequestParam("userId")Integer userId) {
+        likeMapper.addLike_posting(postingId,userId);
         return R.success();
     }
-    @PostMapping("/{postingId}/deleteLike")
-    public R<User> deleteLikePosting(@PathVariable Integer postingId, @RequestParam("user_id")Integer user_id) {
-        likeMapper.deleteLike_posting(postingId,user_id);
+    @PostMapping("/postings/{postingId}/deleteLike")
+    public R<User> deleteLikePosting(@PathVariable Integer postingId, @RequestParam("userId")Integer userId) {
+        likeMapper.deleteLike_posting(postingId,userId);
         return R.success();
     }
 
-    @GetMapping("/{id}")
-    public R<PostingVo> getPosting(@PathVariable Integer id){
-        Posting posting=postingService.getPostingById(id);
+    @GetMapping("/postings/{postingId}")
+    public R<PostingVo> getPosting(@PathVariable Integer postingId){
+        Posting posting=postingService.getPostingById(postingId);
         PostingVo postingVo=new PostingVo();
         BeanUtils.copyProperties(posting,postingVo);
-        postingVo.setId(likeMapper.getLikeCountFromPosting(id));
+        postingVo.setId(likeMapper.getLikeCountFromPosting(postingId));
         return R.success(postingVo);
     }
-    @GetMapping("/{postingId}/getAllPostingLiker")
+    @GetMapping("/postings/{postingId}/getAllPostingLiker")
     public R<List<User>> getAllPostingLiker(@PathVariable Integer postingId){
         List<Integer>newlist=likeMapper.findAllPostingLike(postingId);
         List<User>result=new ArrayList<>();
@@ -85,7 +85,7 @@ public class PostingController {
         }
         return R.success(result);
     }
-    @GetMapping("/{postingId}/getCommentByPosting")
+    @GetMapping("/postings/{postingId}/getCommentByPosting")
     public R<List<PostingComment>> getCommentsByPosting(@PathVariable Integer postingId) {
         List<PostingComment>result=new ArrayList<>();
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByPostingId(postingId);
@@ -94,7 +94,7 @@ public class PostingController {
         }
         return R.success(result);
     }
-    @GetMapping("/{commentId}/getCommentByComment")
+    @GetMapping("/comment/{commentId}/getCommentByComment")
     public R<List<PostingComment>> getCommentsByComment(@PathVariable Integer commentId) {
         List<PostingComment>result=new ArrayList<>();
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByCommentId(commentId);
@@ -103,7 +103,16 @@ public class PostingController {
         }
         return R.success(result);
     }
-    @GetMapping("/{userId}/getCommentByUserId")
+    @GetMapping("/posting/{userId}/getPostingsByUserId")
+    public R<List<Posting>> getPostingsByUserId(@PathVariable Integer userId) {
+        List<Posting>result=new ArrayList<>();
+        List<Integer>nowlist=postingMapper.getPostingByUserId(userId);
+        for(Integer i:nowlist){
+            result.add(postingService.getPostingById(i));
+        }
+        return R.success(result);
+    }
+    @GetMapping("/comment/{userId}/getCommentByUserId")
     public R<List<PostingComment>> getCommentByUserId(@PathVariable Integer userId){
         List<PostingComment>result=new ArrayList<>();
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByUserId(userId);
