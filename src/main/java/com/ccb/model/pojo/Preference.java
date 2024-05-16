@@ -24,6 +24,7 @@ public class Preference implements Serializable {
     private Integer userId;
     //private List<Integer> likeDishId;//之前选过的菜，并且点了喜欢 弃用
     private Integer LikeMenu=1;//编号为1 “我喜欢的菜单”
+    private Integer DishLikeMenu=0;//编号为0 “黑名单菜单”
     private List<Map<String,Integer>> Menus;//菜单(返回用) 可用getMenu(Integer)得到个人的所有菜单(名字+编号)
     private Integer MenusIndex;//没用 做为标记
 
@@ -40,9 +41,4 @@ public class Preference implements Serializable {
     /*
     1、黑名单
      */
-
-    public Preference(Integer MenusIndex,Preference p2){
-        BeanUtils.copyProperties(this, p2);
-        this.setMenusIndex(MenusIndex);
-    }
 }

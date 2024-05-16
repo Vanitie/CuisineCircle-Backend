@@ -28,16 +28,13 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         userDishMenu.setMenuName(menuName);
         userDishMenuMapper.insert(userDishMenu);
     }
-
     public Preference getByUserId(Integer userId) {
         return preferenceMapper.selectByUserId(userId);
     }
-
     //获得一个菜单里的菜
     public List<Integer> getMenuDishes(Integer userId, Integer menuId) {
         return userDishMenuMapper.selectDishesByUserIdAndMenuId(userId, menuId);
     }
-
     //加新菜单，菜单编号顺序从2开始递增，但并无实际意义（删除可以删除其中任意一个）上限不超过10000(MAX_MENUS)
     public R<Preference> creatMenu(Integer userId, String menuName) {
         Preference preference = preferenceMapper.selectByUserId(userId);
@@ -82,7 +79,7 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
         List<UserDishMenu> filteredList = userDishMenuList.stream()
                 .filter(menu -> menu.getUserId().equals(userId))
-                .collect(Collectors.toList());
+                .toList();
 
         List<Map<Integer, String>> menuList = new ArrayList<>();
         for (UserDishMenu menu : filteredList) {
@@ -95,9 +92,17 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
         return menuList;
     }
-
     //删除菜单
     public void deleteMenu(Integer userId, Integer menuId) {
-        userDishMenuMapper.deleteByUserIdAndMenuId(userId, menuId);
+        userDishMenuMapper.deleteByUserIdAndMenuId(userId, menuId);//关联表中删除菜单
+    }
+    //将菜加入黑名单
+    public void addToDisLkeMenu(Integer userId,Integer dishId) {
+        insertUserDishLike(userId, dishId, 0, "黑名单");
+    }
+
+    @Override
+    public void addToLkeMenu(Integer userId, Integer dishId) {
+        insertUserDishLike(userId, dishId, 0, "我喜欢的菜");
     }
 }
