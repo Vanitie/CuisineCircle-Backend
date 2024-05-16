@@ -1,12 +1,15 @@
 package com.ccb.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ccb.model.pojo.Follow;
+import com.ccb.model.pojo.Posting;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
-public interface FollowMapper {
+public interface FollowMapper extends BaseMapper<Follow> {
     // 查询所有关注者关注的用户ID
     List<Integer> selectFollowIdsByFanId(@Param("fanId") Integer fanId);
 

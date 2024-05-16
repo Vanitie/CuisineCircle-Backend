@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -44,10 +45,10 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private Integer sort;//展示顺序
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Timestamp updateTime;
 
     @TableField(fill = FieldFill.INSERT)//记录创建人
     private Long createUserId;

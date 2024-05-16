@@ -53,7 +53,7 @@
       <version>3.5.5</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.alibaba/dashscope-sdk-java -->
+    <!-- https://mvnrepository.com/artifact/com.alibaba/dashscope-sdk-java，通义千问 -->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>dashscope-sdk-java</artifactId>
@@ -64,6 +64,18 @@
         </exclusion>
       </exclusions>
       <version>2.13.0</version>
+    </dependency>
+
+    <!--引入swagger-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.7.0</version>
     </dependency>
 
     <dependency>

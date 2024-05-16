@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,5 +33,5 @@ public class PostingComment implements Serializable {
     private List<Integer>comments;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime; // 评论创建时间
+    private Timestamp createTime; // 评论创建时间
 }

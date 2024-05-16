@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serial;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,6 +31,6 @@ public class PostingVo {
     private boolean isPrePictures;
     private List<PostingComment> comments;//评论，新建表posting_comment
 
-    private LocalDateTime createTime;
-    private LocalDateTime updateTime;
+    private Timestamp createTime;
+    private Timestamp updateTime;
 }

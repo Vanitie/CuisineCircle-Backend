@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serial;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,5 +26,5 @@ public class PostingCommentVo {
     private Integer likes;
     private Integer dislikes;
     private Boolean isSubComment; // 是否为子评论
-    private LocalDateTime createTime; // 评论创建时间
+    private Timestamp createTime; // 评论创建时间
 }
