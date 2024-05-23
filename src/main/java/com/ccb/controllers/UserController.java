@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/detail/{id}")//返回用户详情
     public R<User> detail(@PathVariable("id")Integer id){
         log.info("detail:id={}",id);
         User user=userService.getById(id);
@@ -29,7 +29,6 @@ public class UserController {
     //展示粉丝
     @GetMapping("/{id}/fans")
     public  R<List<User>> showFans(@PathVariable("id")Integer id){
-        User user=userService.getById(id);
         List<Integer> fansIds=userService.getFansId(id);
         List<User> fans=userService.getUsers(fansIds);
         return R.success(fans);
@@ -71,7 +70,7 @@ public class UserController {
     @PostMapping("/login")
     public R<User>login(@RequestBody UserForm userForm){
         log.info("login:user:{}",userForm);
-        User user = userService.getUserByNameAndPassword(userForm.getName(), userForm.getPassword());
+        User user = userService.getUserByNameAndPassword(userForm.getUserName(), userForm.getPassword());
 
         if (user != null) {
             return R.success(user);
