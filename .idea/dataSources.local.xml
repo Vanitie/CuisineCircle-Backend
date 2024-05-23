@@ -16,7 +16,8 @@
       </schema-mapping>
     </data-source>
     <data-source name="liuliuliu@localhost" uuid="0e833c75-3b2a-428d-8aff-91e54c1427d4">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
       <schema-mapping />
     </data-source>
   </component>
