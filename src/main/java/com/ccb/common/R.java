@@ -3,6 +3,7 @@ package com.ccb.common;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*所有返回服务端的数据都会封装为R */
@@ -41,6 +42,15 @@ public class R<T> {
     public R<T> add(String key, Object value) {//添加动态数据
         this.map.put(key, value);
         return this;
+    }
+
+    //增添一个R类针对列表的用法，若有影响或者多余可删
+    public static <T>R<T> successw(List<T> list){
+        R<List<T>> r=new R<>();
+        r.data=list;
+        r.code=1;
+        return (R<T>) r;
+
     }
 
 }

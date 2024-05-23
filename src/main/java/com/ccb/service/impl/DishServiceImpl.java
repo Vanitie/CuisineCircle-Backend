@@ -24,10 +24,12 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
     DishCommentMapper dishCommentMapper;
 
 
-    @Override
+   //显示菜品相关信息
+   @Override
      public  List<DishComment>getDishInformation(long dishId){
 
          return dishCommentMapper.getComment(dishId);
      }
+
 
      }

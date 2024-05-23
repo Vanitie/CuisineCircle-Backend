@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
+//暂弃用
 @TableName("picture")
 @Data
 @AllArgsConstructor
