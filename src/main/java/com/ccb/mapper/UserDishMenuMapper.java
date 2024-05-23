@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserDishMenuMapper extends BaseMapper<UserDishMenu> {
     List<Integer> selectDishesByUserIdAndMenuId(@Param("userId") Integer userId, @Param("menuId") Integer menuId);
     void deleteByUserIdAndMenuId(@Param("userId") Integer userId, @Param("menuId") Integer menuId);
+    String selectMenuNameByUserIdAndMenuId(@Param("userId") Integer userId, @Param("menuId") Integer menuId);
 }

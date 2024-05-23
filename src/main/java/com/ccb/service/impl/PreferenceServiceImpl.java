@@ -8,12 +8,10 @@ import com.ccb.mapper.UserDishMenuMapper;
 import com.ccb.model.pojo.Preference;
 import com.ccb.model.pojo.UserDishMenu;
 import com.ccb.service.PreferenceService;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Preference> implements PreferenceService {
@@ -50,7 +48,7 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         //限制菜单数量
         if(index>MAX_MENUS)
         {
-            List<Map<Integer, String>> menuList=getMenu(userId);
+            List<Map<Integer, String>> menuList= getMenus(userId);
             Set<Integer> usedMenuIds = new HashSet<>();
             for (Map<Integer, String> menuMap : menuList) {
                 usedMenuIds.add(menuMap.keySet().iterator().next());
@@ -81,7 +79,7 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
     //返回个人菜单信息
     @Override
-    public List<Map<Integer, String>> getMenu(Integer userId) {
+    public List<Map<Integer, String>> getMenus(Integer userId) {
         List<UserDishMenu> userDishMenuList = userDishMenuMapper.selectList(null);
 
         List<UserDishMenu> filteredList = userDishMenuList.stream()
@@ -113,15 +111,20 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
     @Override
     public void addToLkeMenu(Integer userId, Integer dishId) {
-        insertUserDishLike(userId, -1, 0, "我喜欢的菜");
-        insertUserDishLike(userId, dishId, 0, "我喜欢的菜");
+        insertUserDishLike(userId, -1, 1, "我喜欢的菜");
+        insertUserDishLike(userId, dishId, 1, "我喜欢的菜");
     }
 
+    @Override
+    public void addToSelectMenu(Integer userId,Integer menuId,Integer dishId){
+        String menuName=userDishMenuMapper.selectMenuNameByUserIdAndMenuId(userId, menuId);
+        insertUserDishLike(userId,dishId,menuId,menuName);
+    }
     /*
     待完成任务：得到菜单图片：菜单一号菜品的图片  ps:在insertUserDishLike中完成
      */
     @Override
-    public String getMenuUrl(Integer menuId){
-        return userDishMenuMapper.selectById(menuId).getMenuUrl();
+    public String getMenuUrl(Integer userId, Integer menuId){
+        return dishMapper.getDishById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst()).getImage();
     }
 }
