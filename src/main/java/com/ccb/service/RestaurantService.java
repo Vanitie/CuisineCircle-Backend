@@ -6,5 +6,7 @@ import com.ccb.model.pojo.Restaurant;
 import java.util.List;
 
 public interface RestaurantService extends IService<Restaurant> {
-    List<Restaurant> restaurants
+    List<Restaurant> getAllRestaurants();
+
+    Restaurant getRestaurantById(Integer restaurant_id);
 }

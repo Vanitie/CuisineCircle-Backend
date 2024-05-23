@@ -12,6 +12,7 @@ public interface DishService  extends IService<Dish> {
 
     List<DishComment> getDishInformation(long dishId);
 
-
+//将菜品添加到它类
+    Dish addDish(Dish dish);
 }
 

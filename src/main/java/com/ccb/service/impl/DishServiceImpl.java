@@ -30,6 +30,9 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
 
          return dishCommentMapper.getComment(dishId);
      }
+@Override
+    Dish addDish(Dish dish){
 
+}
 
      }

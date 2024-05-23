@@ -25,7 +25,7 @@ private RestaurantService restaurantService;
 
     // 获取所有饭店列表,
     @GetMapping("/Restaurantlist")
-    public ResponseEntity<List<Restaurant>> getAllRestaurants() {
+    public R<List<Restaurant>> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantService.getAllRestaurants();
 
 
@@ -33,20 +33,23 @@ private RestaurantService restaurantService;
     }
 
     // 获取特定饭店的详细信息，包括其菜品列表
-    @GetMapping("/{restaurantId}")
-    public ResponseEntity<Restaurant> getRestaurantDetails(@PathVariable("restaurantId") long restaurantId) {
-        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+@GetMapping("{restaurantId}")
+    public R<Restaurant> getRestaurantDetails(@PathVariable("restaurantId")Integer restaurant_id) {
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurant_id);
         if (restaurant != null) {
-            return ResponseEntity.ok(restaurant);
+            return R.success(restaurant) ;
         } else {
-            return ResponseEntity.notFound().build();
+            return R.error("not find");
         }
     }
+
+
 
     // 添加新的饭店
     @PostMapping("/add")
     public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
-        Restaurant newRestaurant = restaurantService.addRestaurant(restaurant);
+        log.info("dish's id={}",restaurant.getId());
+        RestaurantService.save
         return ResponseEntity.ok(newRestaurant);
     }
 
@@ -55,7 +58,7 @@ private RestaurantService restaurantService;
     public ResponseEntity<Dish> addDishToRestaurant(@PathVariable("restaurantId") long restaurantId, @RequestBody Dish dish) {
         Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
         if (restaurant != null) {
-            dish.setRestaurant(restaurant); // 设置菜品所属的饭店
+            dish.setRestaurant(restaurant_id); // 设置菜品所属的饭店
             Dish newDish = dishService.addDish(dish);
             return ResponseEntity.ok(newDish);
         } else {
