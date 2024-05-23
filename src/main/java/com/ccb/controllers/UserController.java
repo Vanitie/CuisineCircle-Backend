@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/detail/{id}")//返回用户详情
     public R<User> detail(@PathVariable("id")Integer id){
         log.info("detail:id={}",id);
         User user=userService.getById(id);
