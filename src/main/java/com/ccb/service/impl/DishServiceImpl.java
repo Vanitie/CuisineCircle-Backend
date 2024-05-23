@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@Repository
+
 public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements DishService{
 
     @Autowired
@@ -30,9 +29,9 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
 
          return dishCommentMapper.getComment(dishId);
      }
-@Override
-    Dish addDish(Dish dish){
 
-}
+     //实现对菜品所属店铺的记录
+
+
 
      }
