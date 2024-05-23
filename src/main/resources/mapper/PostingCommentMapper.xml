@@ -3,14 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ccb.mapper.PostingCommentMapper">
-    <update id="updateLikes" parameterType="map">
-        UPDATE posting_comment
-        SET likes = #{likes}
-        WHERE id = #{commentId}
-    </update>
-    <update id="updateDisLikes" parameterType="map">
-        UPDATE posting_comment
-        SET dislikes = #{dislikes}
-        WHERE id = #{commentId}
-    </update>
+    <!-- 根据帖子ID获取评论ID列表 -->
+    <select id="getPostingCommentIdsByPostingId" parameterType="Integer" resultType="java.lang.Integer">
+        SELECT id FROM posting_comments WHERE posting_id = #{postingId}
+    </select>
+
+    <!-- 根据用户ID获取评论ID列表 -->
+    <select id="getPostingCommentIdsByUserId" parameterType="Integer" resultType="java.lang.Integer">
+        SELECT id FROM posting_comments WHERE user_id = #{userId}
+    </select>
+
+    <!-- 根据评论ID获取评论ID列表（假设获取子评论） -->
+    <select id="getPostingCommentIdsByCommentId" parameterType="Integer" resultType="java.lang.Integer">
+        SELECT id FROM posting_comments WHERE comment_id = #{commentId}
+    </select>
 </mapper>

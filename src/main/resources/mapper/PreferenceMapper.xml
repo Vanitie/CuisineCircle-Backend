@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ccb.mapper.PreferenceMapper">
-    <select id="selectByUserId" parameterType="java.lang.String" resultType="com.example.Preference">
+    <select id="selectByUserId" parameterType="java.lang.String" resultType="com.ccb.model.pojo.Preference">
         SELECT * FROM preferences WHERE user_id = #{userId}
     </select>
 </mapper>

@@ -3,6 +3,8 @@ package com.ccb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ccb.mapper.FollowMapper;
+import com.ccb.mapper.LikeMapper;
 import com.ccb.mapper.PostingMapper;
 import com.ccb.model.pojo.Posting;
 
@@ -12,10 +14,16 @@ import com.ccb.service.PostingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> implements PostingService {
+public abstract class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> implements PostingService {
     @Autowired
     PostingMapper postingMapper;
+    @Autowired
+    FollowMapper followMapper;
+    @Autowired
+    LikeMapper likeMapper;
     @Override
     public Posting getPostingById(Integer id) {
         return getById(id);
@@ -25,37 +33,23 @@ public class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> impl
         postingMapper.insert(posting);
     }
 
-
-
-
-
-    @Override
-    public void likePosting(Integer commentId) {
-        Posting comment = getById(commentId);
-        Integer likes=0;
-        if (comment != null) {
-            likes=comment.getLikes();
-            likes++;
-            postingMapper.updateLikes(commentId,likes);
-        }
-
+    public void addFollow(Integer fanId, Integer followerId){
+        followMapper.addFollow(fanId, followerId);
     }
-
-    @Override
-    public void dislikePosting(Integer commentId) {
-        Posting comment = getById(commentId);
-        Integer dislikes=0;
-        if (comment != null) {
-            dislikes=comment.getLikes();
-            dislikes++;
-            postingMapper.updateDisLikes(commentId,dislikes);
-        }
+    public void deleteFollow(Integer postingId, Integer followerId){
+        followMapper.deleteFollow(postingId, followerId);
     }
 
 
 
-    @Override
-    public void deletePosting(Integer postingId) {
-        postingMapper.deleteById(postingId);
-    }
+
+
+
+
+
+
+
+
+
+
 }

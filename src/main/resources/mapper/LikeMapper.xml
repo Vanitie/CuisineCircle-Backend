@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccb.mapper.LikeMapper">
+    <insert id="addLike_comment" parameterType="map">
+        INSERT INTO comment_likes (comment_id, user_id)
+        VALUES (#{comment_id}, #{user_id})
+    </insert>
+
+    <delete id="deleteLike_comment" parameterType="map">
+        DELETE FROM comment_likes
+        WHERE comment_id = #{comment_id} AND user_id = #{user_id}
+    </delete>
+
+    <insert id="addLike_posting" parameterType="map">
+        INSERT INTO posting_likes (posting_id, user_id)
+        VALUES (#{posting_id}, #{user_id})
+    </insert>
+
+    <delete id="deleteLike_posting" parameterType="map">
+        DELETE FROM posting_likes
+        WHERE posting_id = #{posting_id} AND user_id = #{user_id}
+    </delete>
+
+    <select id="findAllPostingLike" parameterType="int" resultType="java.lang.Integer">
+        SELECT user_id FROM posting_likes WHERE posting_id = #{posting_id}
+    </select>
+
+    <select id="findAllLikeComment" parameterType="int" resultType="java.lang.Integer">
+        SELECT user_id FROM comment_likes WHERE comment_id = #{comment_id}
+    </select>
+
+    <select id="getLikeCountFromPosting" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM posting_likes WHERE posting_id = #{posting_id}
+    </select>
+
+    <select id="getLikeCountFromComment" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM comment_likes WHERE comment_id = #{comment_id}
+    </select>
+
+</mapper>
+
+

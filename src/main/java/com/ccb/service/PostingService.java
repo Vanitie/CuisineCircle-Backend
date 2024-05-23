@@ -9,8 +9,8 @@ public interface PostingService {
     Posting getPostingById(Integer id);
     void addPosting(Posting posting);
 
-    void likePosting(Integer postingId);
-    void dislikePosting(Integer postingId);
 
-    void deletePosting(Integer postingId);
+    void addFollow(Integer fanId, Integer followerId);
+    void deleteFollow(Integer fanId, Integer followerId);
+
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -36,17 +37,19 @@ public class User implements Serializable {
     private String avatar;//头像，存储图片URL
     private String description;
 
+
     private List<Integer> followUserId;//关注的用户
     private List<Integer> fanUserId;//粉丝
+
 
     private List<Posting>postings;//创作的帖子
     private Long preferenceId;
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Timestamp updateTime;
     public void setFanUserId(Integer followerId){
         fanUserId.add(followerId);
     }

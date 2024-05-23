@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @TableName("dish_comment")
@@ -25,5 +26,5 @@ public class DishComment implements Serializable {
     private Integer userId; // 外键，评论者用户ID
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime; // 评论创建时间
+    private Timestamp createTime; // 评论创建时间
 }
