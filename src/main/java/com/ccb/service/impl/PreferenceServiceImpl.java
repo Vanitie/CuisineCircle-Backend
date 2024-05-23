@@ -21,6 +21,11 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     UserDishMenuMapper userDishMenuMapper;
     @Autowired
     DishMapper dishMapper;
+
+    @Override
+    public void changeMenuName(Integer userId, Integer menuId,String menuName){
+        userDishMenuMapper.updateMenuNameByUserIdAndMenuId(userId,menuId,menuName);
+    }
     public static final Integer MAX_MENUS = 10000;
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
         UserDishMenu userDishMenu = new UserDishMenu();

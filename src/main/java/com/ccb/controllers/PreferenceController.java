@@ -31,8 +31,15 @@ public class PreferenceController {
         List<Map<Integer,String>> Menus = preferenceService.getMenus(userId);
         return R.success(Menus);
     }
+    @GetMapping("/getMenuDishes")
+    //得到单个菜单的菜的id
+    public R getMenuDishes(@RequestParam Integer userId,@RequestParam Integer menuId)
+    {
+        List<Integer> dishes=preferenceService.getMenuDishes(userId,menuId);
+        return R.success(dishes);
+    }
     @GetMapping("/getMenuImage")
-    public String getMenuImage(@RequestParam Integer menuId,@RequestParam Integer userId){
+    public String getMenuImage(@RequestParam Integer userId,@RequestParam Integer menuId){
         log.info("Menu:{}'s Image",menuId);
         return preferenceService.getMenuUrl(userId,menuId);
     }
@@ -63,18 +70,18 @@ public class PreferenceController {
         return R.success();
     }
 
-    @DeleteMapping("/deleteMenu:{menuId}")
-    public R deletMenu(Integer userId,@PathVariable("menuId") Integer menuId)
-    {
-        preferenceService.deleteMenu(userId,menuId);
-        return R.success();
-    }
-    @PutMapping("edit")
+    @PutMapping("/edit")
     public R<Preference> editpreference(@RequestBody Preference preference){
         log.info("edit:preference={}",preference);
 
         preferenceService.updateById(preference);
         return R.success(preference);
+    }
+    @PutMapping("/updateMenuName")
+    public R changeMenuName(@RequestParam Integer userId,@RequestParam Integer menuId,@RequestParam String newMenuName){
+        log.info("Change name to:{}",newMenuName);
+        preferenceService.changeMenuName(userId, menuId, newMenuName);
+        return R.success();
     }
 
 }

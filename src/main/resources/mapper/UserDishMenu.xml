@@ -12,4 +12,11 @@
     <select id="selectMenuNameByUserIdAndMenuId" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT menu_name FROM user_dish_menu WHERE user_id = #{userId} AND menu_id = #{menuId}
     </select>
+    <update id="updateMenuNameByUserIdAndMenuId" parameterType="map">
+        UPDATE user_dish_menu
+        <set>
+            menu_name = #{menuName}
+        </set>
+        WHERE user_id = #{userId} AND menu_id = #{menuId}
+    </update>
 </mapper>

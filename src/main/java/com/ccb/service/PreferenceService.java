@@ -25,4 +25,5 @@ public interface PreferenceService extends IService<Preference> {
        待完成任务：得到菜单图片：菜单一号菜品的图片  ps:在insertUserDishLike中完成
          */
     String getMenuUrl(Integer userId, Integer menuId);
+    void changeMenuName(Integer userId, Integer menuId,String menuName);
 }
