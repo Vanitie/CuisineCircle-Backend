@@ -24,7 +24,9 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper,Message> imple
     @Override
     public List<Message> getMessagesByType(Integer userId,Integer messageType) {
         QueryWrapper<Message> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id",userId).eq("message_type", messageType);
+        queryWrapper.eq("user_id",userId)
+                .eq("message_type", messageType)
+                .orderByDesc("create_time"); // 根据 createTime 字段倒序排序;
         return messageMapper.selectList(queryWrapper);
     }
 

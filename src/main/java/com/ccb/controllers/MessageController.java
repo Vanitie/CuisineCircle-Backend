@@ -20,7 +20,7 @@ public class MessageController {
         return R.success(messageService.getAllMessages());
     }
 
-    @GetMapping("/{userId}/{messageType}")//根据消息类型选择对应的消息返回，1表示点赞，2表示评论，3表示待评价
+    @GetMapping("/{userId}/{messageType}")//根据消息类型选择对应的消息返回，1表示点赞，2表示评论，3表示关注，4表示待评价，且未读的在前面
     public R<List<Message>> getMessagesByType(@PathVariable Integer userId,@PathVariable Integer messageType) {
         return R.success(messageService.getMessagesByType(userId,messageType));
     }
