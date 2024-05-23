@@ -19,4 +19,6 @@ public interface PreferenceService extends IService<Preference> {
     List<Map<Integer,String>> getMenu(Integer userId);
     void addToDisLkeMenu(Integer userId,Integer dishId);
     void addToLkeMenu(Integer userId,Integer dishId);
+
+    String getMenuUrl(Integer menuId);
 }
