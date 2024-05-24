@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper, PostingComment> implements PostingCommentService {
+public class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper, PostingComment> implements PostingCommentService {
     @Autowired
     PostingCommentMapper postingCommentMapper;
     @Autowired
