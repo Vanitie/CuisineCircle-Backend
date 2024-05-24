@@ -26,4 +26,5 @@ public interface PreferenceService extends IService<Preference> {
          */
     String getMenuUrl(Integer userId, Integer menuId);
     void changeMenuName(Integer userId, Integer menuId,String menuName);
+    void deleteDish(Integer userId, Integer menuId,Integer dishId);
 }

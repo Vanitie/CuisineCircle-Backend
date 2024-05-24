@@ -17,6 +17,7 @@ public class PreferenceController {
     @Autowired
     private PreferenceService preferenceService;
 
+
     @GetMapping("/detail:{id}")
     public R detail(@PathVariable("id") Integer id){
         log.info("preference detail:id={}",id);
@@ -69,6 +70,12 @@ public class PreferenceController {
         preferenceService.deleteMenu(userId, menuId);
         return R.success();
     }
+    @DeleteMapping("/deleteDishFromMenu")
+    public R deleteDishFromMenu(@RequestParam Integer ueserId,@RequestParam Integer menuId,@RequestParam Integer dishId)
+    {
+        preferenceService.deleteDish(ueserId, menuId, dishId);
+        return R.success();
+    }
 
     @PutMapping("/edit")
     public R<Preference> editpreference(@RequestBody Preference preference){
@@ -83,5 +90,6 @@ public class PreferenceController {
         preferenceService.changeMenuName(userId, menuId, newMenuName);
         return R.success();
     }
+
 
 }

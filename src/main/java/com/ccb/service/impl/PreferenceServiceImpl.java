@@ -1,5 +1,6 @@
 package com.ccb.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ccb.common.R;
 import com.ccb.mapper.DishMapper;
@@ -26,6 +27,17 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     public void changeMenuName(Integer userId, Integer menuId,String menuName){
         userDishMenuMapper.updateMenuNameByUserIdAndMenuId(userId,menuId,menuName);
     }
+
+    @Override
+    public void deleteDish(Integer userId, Integer menuId, Integer dishId) {
+        QueryWrapper<UserDishMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId)
+                .eq("menu_id", menuId)
+                .eq("dish_id", dishId);
+        // 执行删除操作
+        int deleteCount = userDishMenuMapper.delete(queryWrapper);
+    }
+
     public static final Integer MAX_MENUS = 10000;
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
         UserDishMenu userDishMenu = new UserDishMenu();
