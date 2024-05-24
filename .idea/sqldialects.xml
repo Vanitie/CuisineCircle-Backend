@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/PostingMapper.xml" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/PreferenceMapper.xml" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UserDishMenu.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" dialect="CassandraQL" />
   </component>
 </project>

@@ -12,4 +12,5 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     List<User> selectUsersByIds(@Param("ids") List<Integer> ids);
+    String findNameByID(@Param("id") Integer id);
 }

@@ -5,6 +5,7 @@ import com.ccb.common.R;
 import com.ccb.mapper.LikeMapper;
 import com.ccb.mapper.PostingCommentMapper;
 import com.ccb.mapper.PostingMapper;
+import com.ccb.mapper.UserMapper;
 import com.ccb.model.pojo.Message;
 import com.ccb.model.pojo.Posting;
 import com.ccb.model.pojo.PostingComment;
@@ -39,7 +40,8 @@ public class PostingController {
     private PostingMapper postingMapper;
     @Autowired
     private MessageService messageService;
-
+    @Autowired
+    private UserMapper userMapper;
 
 
     @PostMapping("postings/{fanId}/follow")
@@ -49,6 +51,8 @@ public class PostingController {
         message.setMessageType(3);
         message.setUserId(followId);
         message.setReminderId(fanId);
+        message.setName(userMapper.findNameByID(fanId));
+        message.setOutline("关注了你");
         messageService.createMessage(message);
         return R.success();
 
@@ -71,6 +75,8 @@ public class PostingController {
         Message message = new Message();
         message.setMessageType(1);
         message.setUserId(postingSender);
+        message.setName(userMapper.findNameByID(userId));
+        message.setOutline("点赞了你的帖子");
         message.setReminderId(userId);
         messageService.createMessage(message);
         return R.success();
@@ -162,6 +168,8 @@ public class PostingController {
         message.setMessageType(1);
         message.setUserId(commentSender);
         message.setReminderId(userId);
+        message.setName(userMapper.findNameByID(userId));
+        message.setOutline("点赞了你的评论");
         messageService.createMessage(message);
         return R.success();
     }
@@ -202,6 +210,8 @@ public class PostingController {
         message.setMessageType(2);
         message.setUserId(postingService.getPostingSenderByPostingId(comment.getPostingId()));
         message.setReminderId(comment.getUserId());
+        message.setOutline("回复了你的评论"+comment.getContent());
+        message.setName(userMapper.findNameByID(comment.getUserId()));
         messageService.createMessage(message);
         return R.success();
     }
@@ -212,6 +222,8 @@ public class PostingController {
         message.setMessageType(2);
         message.setUserId(postingCommentService.getCommentSenderByCommentId(comment.getCommentId()));
         message.setReminderId(comment.getUserId());
+        message.setName(userMapper.findNameByID(comment.getUserId()));
+        message.setOutline("回复了你的评论"+comment.getContent());
         messageService.createMessage(message);
         return R.success();
     }

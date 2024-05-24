@@ -22,4 +22,5 @@ public interface FollowMapper extends BaseMapper<Follow> {
     //删除关注关系
     void deleteFollow(@Param("fanId") Integer fanId, @Param("followId") Integer followId);
 
+
 }

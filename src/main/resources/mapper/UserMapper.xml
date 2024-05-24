@@ -9,4 +9,8 @@
             #{item}
         </foreach>
     </select>
+    <select id="findNameByID" >
+        SELECT user_name FROM user WHERE id = #{id}
+
+    </select>
 </mapper>
