@@ -39,6 +39,9 @@ public  class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> imp
     public void deleteFollow(Integer postingId, Integer followerId){
         followMapper.deleteFollow(postingId, followerId);
     }
+    public Integer getPostingSenderByPostingId(Integer postingId){
+        return postingMapper.getUserIdByPostingId(postingId);
+    }
 
 
 

@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper
 public interface PostingMapper extends BaseMapper<Posting> {
     List<Integer> getPostingByUserId(@Param("userId") Integer userId);
-
+    Integer getUserIdByPostingId(@Param("postingId") Integer postingId);
 
 }

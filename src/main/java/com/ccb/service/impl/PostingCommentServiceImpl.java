@@ -47,6 +47,9 @@ public class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper,
         return;
 
     }
+    public Integer getCommentSenderByCommentId(Integer commentId){
+        return postingCommentMapper.getUserIdByCommentId(commentId);
+    }
 
 
 
