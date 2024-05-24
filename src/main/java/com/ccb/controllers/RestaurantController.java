@@ -21,8 +21,8 @@ public class RestaurantController {
     @Autowired
 private RestaurantService restaurantService;
 
-    @Autowired
-    private DishService dishService;
+//    @Autowired
+//    private DishService;
 
     // 获取所有饭店列表,
     @GetMapping("/Restaurantlist")
