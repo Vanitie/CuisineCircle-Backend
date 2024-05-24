@@ -16,7 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/ResturantController")
 
-public class ResturantController {
+public class RestaurantController {
+
     @Autowired
 private RestaurantService restaurantService;
 
@@ -39,7 +40,7 @@ private RestaurantService restaurantService;
         if (restaurant != null) {
             return R.success(restaurant) ;
         } else {
-            return R.error("not find");
+            return R.error("not found");
         }
     }
 
@@ -47,21 +48,22 @@ private RestaurantService restaurantService;
 
     // 添加新的饭店
     @PostMapping("/add")
-    public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
-        log.info("dish's id={}",restaurant.getId());
-        RestaurantService.save
-        return ResponseEntity.ok(newRestaurant);
+    public R<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
+        log.info("dish's id={}",restaurant.getRestaurant_id());
+        restaurantService.save(restaurant);
+        return R.success();
     }
 
     // 在特定饭店中添加菜品
     @PostMapping("/{restaurantId}/dish/add")
-    public ResponseEntity<Dish> addDishToRestaurant(@PathVariable("restaurantId") long restaurantId, @RequestBody Dish dish) {
+    public R<Dish> addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
         Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
         if (restaurant != null) {
-            dish.setRestaurant(restaurant_id); // 设置菜品所属的饭店
-            Dish newDish = dishService.addDish(dish);
-            return ResponseEntity.ok(newDish);
+            Integer restaurant_id = restaurant.getRestaurant_id();
+            dish.setRestaurant_id(restaurant_id); // 设置菜品所属的饭店
+
+            return R.success();//待修改
         } else {
-            return ResponseEntity.notFound().build();
+            return R.success();//待修改
         }
-}
+}}

@@ -12,5 +12,6 @@ public interface PostingService {
 
     void addFollow(Integer fanId, Integer followerId);
     void deleteFollow(Integer fanId, Integer followerId);
+    Integer getPostingSenderByPostingId(Integer postingId);
 
 }

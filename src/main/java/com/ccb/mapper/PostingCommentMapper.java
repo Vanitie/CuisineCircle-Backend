@@ -13,6 +13,6 @@ public interface PostingCommentMapper extends BaseMapper<PostingComment> {
     List<Integer>getPostingCommentIdsByPostingId(@Param("postingId") Integer postingId);
     List<Integer>getPostingCommentIdsByUserId(@Param("userId") Integer userId);
     List<Integer>getPostingCommentIdsByCommentId(@Param("commentId")Integer commentId);
-
+    Integer getUserIdByCommentId(@Param("commentId") Integer commentId);
 
 }

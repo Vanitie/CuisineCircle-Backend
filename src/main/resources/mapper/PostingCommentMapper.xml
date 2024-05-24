@@ -17,4 +17,7 @@
     <select id="getPostingCommentIdsByCommentId" parameterType="Integer" resultType="java.lang.Integer">
         SELECT id FROM posting_comments WHERE comment_id = #{commentId}
     </select>
+    <select id="getUserIdByCommentId" parameterType="Integer" resultType="java.lang.Integer">
+        SELECT user_id FROM posting_comments WHERE id = #{commentId}
+    </select>
 </mapper>
