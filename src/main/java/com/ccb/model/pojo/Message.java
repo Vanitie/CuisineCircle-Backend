@@ -25,6 +25,9 @@ public class Message implements Serializable {
     private Integer userId;//接受消息者
     private Integer reminderId;//点赞或评论者
     private Integer dishId;//需要评价的菜品
+
+    private String content;//消息内容，用于显示消息概要
+
     private Boolean read;//是否已读
 
 
