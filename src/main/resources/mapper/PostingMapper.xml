@@ -6,4 +6,7 @@
     <select id="getPostingByUserId" parameterType="Integer" resultType="java.lang.Integer">
         SELECT id FROM postings WHERE userId = #{userId}
     </select>
+    <select id="getUserIdByPostingId" parameterType="Integer" resultType="java.lang.Integer">
+        SELECT user_id FROM postings WHERE id = #{postingId}
+    </select>
 </mapper>
