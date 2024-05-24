@@ -226,6 +226,7 @@ public class PostingController {
         message.setOutline("回复了你的评论"+comment.getContent());
         messageService.createMessage(message);
         return R.success();
+
     }
 
 
