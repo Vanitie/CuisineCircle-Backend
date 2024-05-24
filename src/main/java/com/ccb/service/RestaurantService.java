@@ -9,4 +9,6 @@ public interface RestaurantService extends IService<Restaurant> {
     List<Restaurant> getAllRestaurants();
 
     Restaurant getRestaurantById(Integer restaurant_id);
+
+
 }
