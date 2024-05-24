@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> implements PostingService {
+public  class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> implements PostingService {
     @Autowired
     PostingMapper postingMapper;
     @Autowired
@@ -38,6 +38,9 @@ public abstract class PostingServiceImpl extends ServiceImpl<PostingMapper, Post
     }
     public void deleteFollow(Integer postingId, Integer followerId){
         followMapper.deleteFollow(postingId, followerId);
+    }
+    public Integer getPostingSenderByPostingId(Integer postingId){
+        return postingMapper.getUserIdByPostingId(postingId);
     }
 
 

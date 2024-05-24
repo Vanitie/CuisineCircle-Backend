@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper, PostingComment> implements PostingCommentService {
+public class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper, PostingComment> implements PostingCommentService {
     @Autowired
     PostingCommentMapper postingCommentMapper;
     @Autowired
@@ -46,6 +46,9 @@ public abstract class PostingCommentServiceImpl extends ServiceImpl<PostingComme
         }
         return;
 
+    }
+    public Integer getCommentSenderByCommentId(Integer commentId){
+        return postingCommentMapper.getUserIdByCommentId(commentId);
     }
 
 

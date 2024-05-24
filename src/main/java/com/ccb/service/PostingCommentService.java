@@ -11,6 +11,7 @@ public interface PostingCommentService {
     PostingComment getPostingCommentById(Integer id);
     void addComment(PostingComment comment);
     void findAllAllCommentId(Integer commentId, List<Integer> commentList);
+    Integer getCommentSenderByCommentId(Integer commentId);
 
 
 }
