@@ -1,15 +1,22 @@
 package com.ccb.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ccb.model.pojo.Dish;
+import com.ccb.model.pojo.PostingComment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-@Mapper
-public interface DishMapper {
-    @Select("SELECT MAX(id) FROM dish")
-    Long getMaxDishId();
+import java.util.List;
 
-    @Select("SELECT * FROM dish WHERE id = #{id}")
-    Dish getDishById(@Param("id") long id);
+@Mapper
+public interface DishMapper extends BaseMapper<Dish> {
+
+
+
+
+    Dish getDishById(long randomId);
+
+
+    Long getMaxDishId();
 }

@@ -16,7 +16,13 @@ public interface PreferenceService extends IService<Preference> {
     R<Preference> creatMenu(Integer userId, String menuName);
     void shareMenu();
 
-    List<Map<Integer,String>> getMenu(Integer userId);
+    List<Map<Integer,String>> getMenus(Integer userId);
     void addToDisLkeMenu(Integer userId,Integer dishId);
     void addToLkeMenu(Integer userId,Integer dishId);
+
+    void addToSelectMenu(Integer userId,Integer menuId,Integer dishId);
+    /*
+       待完成任务：得到菜单图片：菜单一号菜品的图片  ps:在insertUserDishLike中完成
+         */
+    String getMenuUrl(Integer userId, Integer menuId);
 }

@@ -1,18 +1,17 @@
 package com.ccb.model.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-//暂弃用
-@TableName("picture")
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Picture implements Serializable {
-    private Integer id;
+public class Restaurant implements Serializable {
+    private Integer restaurant_id;
+    private  String name;
     private String picUrl;
-    private Integer userId;
+    private  Float score;//评分
 }

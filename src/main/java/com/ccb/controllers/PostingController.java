@@ -13,6 +13,7 @@ import com.ccb.service.PostingCommentService;
 import com.ccb.service.UserService;
 import com.ccb.vo.PostingVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/posting")
 public class PostingController {
 
+    @Autowired
     private final PostingService postingService;
     private final PostingCommentService postingCommentService;
     private final UserService userService;

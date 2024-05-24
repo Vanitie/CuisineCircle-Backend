@@ -1,21 +1,13 @@
 package com.ccb.controllers;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccb.common.R;
-import com.ccb.form.UserForm;
-import com.ccb.mapper.PreferenceMapper;
 import com.ccb.model.pojo.Preference;
-import com.ccb.model.pojo.User;
-import com.ccb.service.PreferenceBlindBoxService;
 import com.ccb.service.PreferenceService;
-import com.ccb.service.impl.PreferenceBlindBoxServiceImpl;
-import com.ccb.vo.Result;
-import com.ccb.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 //周子腾
 @Slf4j
@@ -25,33 +17,63 @@ public class PreferenceController {
     @Autowired
     private PreferenceService preferenceService;
 
-    @GetMapping("/detail")
+    @GetMapping("/detail:{id}")
     public R detail(@PathVariable("id") Integer id){
         log.info("preference detail:id={}",id);
-        Preference preference=preferenceService.getById(id);
+        Preference preference=preferenceService.getByUserId(id);
 
         return R.success(preference);
     }
-
+    @GetMapping("/getMenus:{id}")
+    //得到个人全部菜单的id和名字
+    public R getMenus(@PathVariable("id") Integer userId){
+        log.info("UserId:{} 's Menu",userId);
+        List<Map<Integer,String>> Menus = preferenceService.getMenus(userId);
+        return R.success(Menus);
+    }
+    @GetMapping("/getMenuImage")
+    public String getMenuImage(@RequestParam Integer menuId,@RequestParam Integer userId){
+        log.info("Menu:{}'s Image",menuId);
+        return preferenceService.getMenuUrl(userId,menuId);
+    }
     @PostMapping("/add")
     public R<Preference> add(@RequestBody Preference preference){
         log.info("dish's id={}",preference.getId());
         preferenceService.save(preference);
         return R.success();
     }
-
-    @DeleteMapping("/delete")
-    public R<Preference> delete(@PathVariable("id") Integer id){
-        preferenceService.removeById(id);
+    //创建菜单
+    @PostMapping("/creatMenu")
+    public R creatMenu(@RequestParam Integer userId,@RequestParam String Name){
+        log.info("User:{}'s new Menu:{}",userId,Name);
+        return preferenceService.creatMenu(userId,Name);
+    }
+    @PostMapping("/addDishToMenu")//我喜欢的菜 menuId=1  黑名单菜单 menuId=0
+    public R addDishToMenu(@RequestParam Integer userId,@RequestParam Integer menuId,@RequestParam Integer dishId)
+    {
+        log.info("User:{} add dish:{} to menu:{}",userId,dishId,menuId);
+        preferenceService.addToSelectMenu(userId,menuId,dishId);
         return R.success();
     }
 
+    //删除菜单
+    @DeleteMapping("/deleteMenu")///deleteMenu?userId=1&menuId=2
+    public R deleteMenu(@RequestParam Integer userId, @RequestParam Integer menuId) {
+        preferenceService.deleteMenu(userId, menuId);
+        return R.success();
+    }
+
+    @DeleteMapping("/deleteMenu:{menuId}")
+    public R deletMenu(Integer userId,@PathVariable("menuId") Integer menuId)
+    {
+        preferenceService.deleteMenu(userId,menuId);
+        return R.success();
+    }
     @PutMapping("edit")
     public R<Preference> editpreference(@RequestBody Preference preference){
         log.info("edit:preference={}",preference);
 
         preferenceService.updateById(preference);
-
         return R.success(preference);
     }
 

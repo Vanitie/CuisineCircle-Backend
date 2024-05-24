@@ -26,7 +26,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private String name;
+    private String userName;
     private String password;
     private Integer phone;//电话号码
     private Gender gender;
