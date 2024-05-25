@@ -2,14 +2,8 @@
 package com.ccb.controllers;
 
 import com.ccb.common.R;
-import com.ccb.mapper.LikeMapper;
-import com.ccb.mapper.PostingCommentMapper;
-import com.ccb.mapper.PostingMapper;
-import com.ccb.mapper.UserMapper;
-import com.ccb.model.pojo.Message;
-import com.ccb.model.pojo.Posting;
-import com.ccb.model.pojo.PostingComment;
-import com.ccb.model.pojo.User;
+import com.ccb.mapper.*;
+import com.ccb.model.pojo.*;
 import com.ccb.service.MessageService;
 import com.ccb.service.PostingService;
 import com.ccb.service.PostingCommentService;
@@ -42,6 +36,8 @@ public class PostingController {
     private MessageService messageService;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private ReadHistoryMapper readHistoryMapper;
 
 
     @PostMapping("/postings/{fanId}/follow")
@@ -65,7 +61,19 @@ public class PostingController {
     @PostMapping("/posting/addPost")
     public R<User> addPosting(@RequestBody Posting posting){
         postingService.addPosting(posting);
+        ReadHistory readHistory = new ReadHistory();
+        readHistory.setPostingId(posting.getId());
+        readHistory.setUserId(posting.getUserId());
+        readHistoryMapper.insert(readHistory);
+
+
         return R.success();
+    }
+    @GetMapping("/posting/history")
+    public R<List<ReadHistory>> getPostingHistory(@RequestParam("userId") Integer userId){
+        List<ReadHistory>result=readHistoryMapper.selectByUserId(userId);
+
+        return R.success(result);
     }
 
     @PostMapping("/postings/{postingId}/like")
