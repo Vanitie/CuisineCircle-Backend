@@ -57,7 +57,7 @@ public class PostingController {
         return R.success();
 
     }
-    @PostMapping("/{fanId/deleteFollow}")
+    @PostMapping("/{fanId}/deleteFollow")
     public R<User> deleteBlogger(@PathVariable Integer fanId, @RequestParam("followId") Integer followId) {
         postingService.deleteFollow(fanId, followId);
         return R.success();
