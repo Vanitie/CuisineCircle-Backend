@@ -44,7 +44,7 @@ public class PostingController {
     private UserMapper userMapper;
 
 
-    @PostMapping("postings/{fanId}/follow")
+    @PostMapping("/postings/{fanId}/follow")
     public R<User> followBlogger(@PathVariable Integer fanId, @RequestParam("followId") Integer followId) {
         postingService.addFollow(fanId, followId);//fanId是粉丝，followId是被关注着
         Message message = new Message();
@@ -57,12 +57,12 @@ public class PostingController {
         return R.success();
 
     }
-    @PostMapping("/{fanId}/deleteFollow")
+    @PostMapping("/posting/{fanId}/deleteFollow")
     public R<User> deleteBlogger(@PathVariable Integer fanId, @RequestParam("followId") Integer followId) {
         postingService.deleteFollow(fanId, followId);
         return R.success();
     }
-    @PostMapping("/addPost")
+    @PostMapping("/posting/addPost")
     public R<User> addPosting(@RequestBody Posting posting){
         postingService.addPosting(posting);
         return R.success();
