@@ -6,5 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface TagMapper extends BaseMapper<Tag> {
+
     // 这里可以自定义一些其他的方法
 }

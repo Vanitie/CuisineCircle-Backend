@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant implements Serializable {
-    private Integer restaurant_id;
+    private Integer restaurantId;
     private  String name;
     private String picUrl;
     private  Float score;//评分

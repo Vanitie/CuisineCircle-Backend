@@ -4,6 +4,7 @@ import com.ccb.common.R;
 import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.DishComment;
 import com.ccb.service.DishCommentService;
+import com.ccb.service.TagService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class DishCommentController {
     @Autowired
     private DishCommentService dishCommentService;
+
     @GetMapping("/detail/{id}")
     public R detail(@PathVariable("id") Integer id){
         log.info("dishcomment detail:id={}",id);
@@ -40,4 +42,6 @@ public class DishCommentController {
 
         return R.success(dishComment);
     }
+
+
 }

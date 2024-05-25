@@ -49,7 +49,7 @@ private RestaurantService restaurantService;
     // 添加新的饭店
     @PostMapping("/add")
     public R<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
-        log.info("dish's id={}",restaurant.getRestaurant_id());
+        log.info("dish's id={}",restaurant.getRestaurantId());
         restaurantService.save(restaurant);
         return R.success();
     }
@@ -59,8 +59,8 @@ private RestaurantService restaurantService;
     public R<Dish> addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
         Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
         if (restaurant != null) {
-            Integer restaurant_id = restaurant.getRestaurant_id();
-            dish.setRestaurant_id(restaurant_id); // 设置菜品所属的饭店
+            Integer restaurant_id = restaurant.getRestaurantId();
+            dish.setRestaurantId(restaurant_id); // 设置菜品所属的饭店
 
             return R.success();//待修改
         } else {

@@ -26,11 +26,11 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private Float stars;//星级，0-10，每一级表示半颗星
     private String navigationUrl; // 导航地址
 
-    private Integer restaurant_id;//判断所属店铺
+    private Integer restaurantId;//判断所属店铺
     private String image;//使用string存储图片URL，节省数据库空间
     private String description;//描述信息
-    private boolean is_eat;//是否吃过，用于记录用户和菜品联系
 
+    private Integer eatNumber;//记录吃过的人数
     /*
    // private Integer spicy; // 辣度，0-10
     //private Integer health; // 健康程度，0-10，清淡到油腻

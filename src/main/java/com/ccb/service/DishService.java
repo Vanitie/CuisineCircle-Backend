@@ -4,15 +4,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.DishComment;
 import com.ccb.model.pojo.Preference;
+import com.ccb.model.pojo.Tag;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface DishService  extends IService<Dish> {
+public interface DishService  extends IService<Dish>{
 
 
-
-//将菜品添加到它类(待添加函数，目前未实现)
-
+    List<Dish>getAllDishes();
 }
 

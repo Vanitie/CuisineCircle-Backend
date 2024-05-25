@@ -12,6 +12,7 @@ import java.util.List;
 @Mapper
 public interface DishMapper extends BaseMapper<Dish> {
 
+List<Dish>getAlldishes();
 
 
 
@@ -19,4 +20,6 @@ public interface DishMapper extends BaseMapper<Dish> {
 
 
     Long getMaxDishId();
+
+    void updatEatingInfo(Integer dishId);
 }
