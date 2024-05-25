@@ -1,6 +1,5 @@
 package com.ccb.controllers;
 
-import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.ccb.common.R;
 import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.Preference;

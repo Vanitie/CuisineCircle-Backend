@@ -11,10 +11,8 @@ import java.util.List;
 
 @Mapper
 public interface DishMapper extends BaseMapper<Dish> {
-
+    
 List<Dish>getAlldishes();
-
-
 
     Dish getDishById(long randomId);
 
