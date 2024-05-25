@@ -12,4 +12,6 @@ public interface TagService extends IService<Tag> {
     Tag getTag(Integer tagId);
     Tag getTagByName(String name);
     List<Tag> getDishTags(Integer dishId);
+    void addTagToDish(Integer dishId, Integer tagId);
+    void deleteTagFromDish(Integer dishId,Integer tagId);
 }
