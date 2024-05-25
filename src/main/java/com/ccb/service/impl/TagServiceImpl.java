@@ -68,5 +68,43 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
         }
         return tagMapper.selectBatchIds(tagIds);
     }
+    @Override
+    //为菜品添加tag
+    public void addTagToDish(Integer dishId, Integer tagId) {
+        // 查询是否已经存在 dishId 和 tagId 的组合
+        QueryWrapper<DishTagAssociation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dish_id", dishId).eq("tag_id", tagId);
+        DishTagAssociation existingAssociation = dishTagAssociationMapper.selectOne(queryWrapper);
 
+        if (existingAssociation != null) {
+            // 如果存在，则更新 count 字段
+            existingAssociation.setCount(existingAssociation.getCount() + 1); // 假设 count 字段需要加1
+            dishTagAssociationMapper.updateById(existingAssociation);
+        } else {
+            // 如果不存在，则插入新的记录，初始 count 为 1
+            insertDishTagAssociation(dishId, tagId, 1);
+        }
+    }
+    @Override
+    //删除菜品中的tag
+    public void deleteTagFromDish(Integer dishId,Integer tagId){
+        // 查询是否已经存在 dishId 和 tagId 的组合
+        QueryWrapper<DishTagAssociation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dish_id", dishId).eq("tag_id", tagId);
+        DishTagAssociation existingAssociation = dishTagAssociationMapper.selectOne(queryWrapper);
+
+        if (existingAssociation != null) {
+            // 如果存在，则更新 count 字段
+            if (existingAssociation.getCount() > 1) {
+                existingAssociation.setCount(existingAssociation.getCount() - 1);
+                dishTagAssociationMapper.updateById(existingAssociation);
+            } else {
+                // 如果 count 减少到 0，则删除记录
+                dishTagAssociationMapper.delete(queryWrapper);
+            }
+        } else {
+            // 如果不存在，则删除失败（这里可以抛出异常或记录日志）
+            throw new IllegalArgumentException("Dish-Tag association not found.");
+        }
+    }
 }
