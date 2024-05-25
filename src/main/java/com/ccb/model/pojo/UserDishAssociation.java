@@ -14,4 +14,7 @@ public class UserDishAssociation {
     Integer userId;
     Integer dishId;
     boolean isEat;
+
+    public boolean getIsEat(){return isEat;}
+
 }
