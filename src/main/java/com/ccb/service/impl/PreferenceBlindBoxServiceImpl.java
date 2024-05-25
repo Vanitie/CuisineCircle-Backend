@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PreferenceBlindBoxServiceImpl extends ServiceImpl<PreferenceMapper, Preference> implements PreferenceBlindBoxService {
 
-    @Autowired
-    private PreferenceBlindBoxService preferenceService;
+
 
 
 }

@@ -60,15 +60,6 @@ public class CCBController {
         userVo.setPictures(pictures);
         return Result.success(userVo);
     }
-    @PostMapping("/add")
-    /*public Result add(@RequestBody UserForm userForm){
-        log.info("add:user:{}",userForm);
-        User user=new User();
-        BeanUtils.copyProperties(userForm,user);
-        userService.saveMain(user,userForm.getPictures());
-
-        return detail(user.getId());
-    }*/
     @PutMapping("/edit/{id}")
     public Result edit(@RequestBody UserForm userForm,@PathVariable("id") int id){
         log.info("edit:user={}",userForm);
