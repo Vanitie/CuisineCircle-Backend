@@ -12,6 +12,6 @@ import java.util.List;
 public interface DishService  extends IService<Dish>{
 
 
-    List<Dish>getAllDishes();
+    //List<Dish>getAllDishes();这里在实现类里没有实现暂时只能先注释掉了
 }
 
