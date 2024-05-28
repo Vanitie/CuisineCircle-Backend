@@ -23,10 +23,10 @@ public class DishController {
     @Autowired
     TagService tagService;
     @Autowired
-    private DishService dishService;
+     DishService dishService;
 
 
-    @GetMapping("/detail")
+    @GetMapping("/detail/{id}")
     public R detail(@PathVariable("id") Integer id){
         log.info("dish detail:id={}",id);
         Dish dish= dishService.getById(id);
@@ -54,7 +54,8 @@ public class DishController {
     }
 
     //查询菜品的Tag信息
-    public List<String> returnTags(Integer dishId)
+    @GetMapping("/{id}/tag")
+    public List<String> returnTags(@PathVariable("id") Integer dishId)
     {
         List<Tag> tags=tagService.getDishTags(dishId);
         return tags.stream()
@@ -67,11 +68,5 @@ public class DishController {
 
         tagService.deleteTagFromDish(dishId,tagId);
 
-    }
+    }}
 
-public void addTags(Integer tagId,Integer dishId) {
-tagService.addTagToDish(dishId,tagId);
-}
-
-
-}
