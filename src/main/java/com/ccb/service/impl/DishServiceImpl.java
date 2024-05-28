@@ -18,7 +18,7 @@ import java.util.List;
 
 @Service
 @Repository
-public class DIshServiceImpl extends ServiceImpl<DishMapper,Dish>implements DishService {
+public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements DishService {
     @Autowired
     private TagMapper tagMapper;
     @Autowired
