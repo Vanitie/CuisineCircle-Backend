@@ -2,12 +2,10 @@ package com.ccb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ccb.mapper.DishCommentMapper;
 import com.ccb.mapper.DishMapper;
 import com.ccb.mapper.TagMapper;
 import com.ccb.mapper.UserDishAssociationMapper;
 import com.ccb.model.pojo.Dish;
-import com.ccb.model.pojo.DishComment;
 import com.ccb.model.pojo.UserDishAssociation;
 import com.ccb.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+//这个里面有大量没有使用的方法似乎，如果最终用不到的话最好就不要保留
 @Service
 @Repository
 public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements DishService {
