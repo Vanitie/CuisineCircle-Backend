@@ -61,5 +61,5 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
             dish.setEatNumber(dish.getEatNumber() + 1);
             dishMapper.updateById(dish);
         }
-       }
+    }
 }
