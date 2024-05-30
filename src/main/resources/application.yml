@@ -5,9 +5,9 @@ spring:
     name: ccb_prototype
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/liuliuliu
+    url: jdbc:mysql://localhost:3306/cuisine
     username: root
-    password: xwh20040919
+    password: whq5060650288zl
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
