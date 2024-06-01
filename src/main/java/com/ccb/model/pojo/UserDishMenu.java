@@ -14,6 +14,6 @@ public class UserDishMenu {
     Integer userId;
     Integer dishId;
     Integer menuId;
-    String MenuName;
-    String MenuUrl;
+    String menuName;
+    String menuUrl;
 }
