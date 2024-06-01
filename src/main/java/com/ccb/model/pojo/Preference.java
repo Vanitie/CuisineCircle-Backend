@@ -28,15 +28,15 @@ public class Preference implements Serializable {
     private List<Map<String,Integer>> Menus;//菜单(返回用) 可用getMenu(Integer)得到个人的所有菜单(名字+编号)
     private Integer MenusIndex;//没用 做为标记
 
-    private BigDecimal price;//平均价格
-    private Integer spicy;//辣度，0-10
-    private Integer sweet;//甜度，0-10
-    private Integer sour;//酸度，0-10
-    private Integer health;//健康程度，0-10，清淡到油腻
-    private Integer calorieIndex;//热量多少，0-10，少-多
-    private Map<String, Integer> weightedCuisinePreferences; // 加权菜系表
-    private Map<String, Integer> cookingStylePreferences; // 烹饪风格偏好
-    private Map<String, Integer> restaurantPreferences; // 餐厅偏好
+//    private BigDecimal price;//平均价格
+//    private Integer spicy;//辣度，0-10
+//    private Integer sweet;//甜度，0-10
+//    private Integer sour;//酸度，0-10
+//    private Integer health;//健康程度，0-10，清淡到油腻
+//    private Integer calorieIndex;//热量多少，0-10，少-多
+//    private Map<String, Integer> weightedCuisinePreferences; // 加权菜系表
+//    private Map<String, Integer> cookingStylePreferences; // 烹饪风格偏好
+//    private Map<String, Integer> restaurantPreferences; // 餐厅偏好
 
     /*
     1、黑名单
