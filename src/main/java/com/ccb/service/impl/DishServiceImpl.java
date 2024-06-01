@@ -47,7 +47,7 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
         UserDishAssociation association = userDishAssociationMapper.selectOne(queryWrapper);
 
         // 返回 isEat 属性，如果记录不存在返回 null
-        return association != null && Boolean.TRUE.equals(association.getIsEat());
+        return association != null && Boolean.TRUE.equals(association.getIsEat()); 
     }
 
 
