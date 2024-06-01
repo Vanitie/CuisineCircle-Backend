@@ -29,7 +29,7 @@ public class User implements Serializable {
     private String userName;
     private String password;
     private Integer phone;//电话号码
-    private Gender gender;
+    private Boolean gender;
 
     private Date birthday;
     private String deptName;//院系
