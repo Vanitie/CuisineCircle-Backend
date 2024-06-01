@@ -2,6 +2,7 @@ package com.ccb.model.pojo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@TableName("dish")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Dish implements Serializable {//便于持久化存储和传输
@@ -26,7 +28,7 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private Float stars;//星级，0-10，每一级表示半颗星
     private String navigationUrl; // 导航地址
 
-    private Integer restaurantId;//判断所属店铺
+    private Integer restaurantId;//判断所属店铺 外键
     private String image;//使用string存储图片URL，节省数据库空间
     private String description;//描述信息
 
