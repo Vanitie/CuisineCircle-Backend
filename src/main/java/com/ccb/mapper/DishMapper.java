@@ -16,6 +16,8 @@ List<Dish>getAlldishes();
 
     Dish getDishById(long randomId);
 
+    @Select("SELECT image FROM dish WHERE id = #{dishId}")
+    String selectImageById(Integer dishId);
 
     Long getMaxDishId();
 
