@@ -5,8 +5,8 @@
 <mapper namespace="com.ccb.mapper.UserMapper">
     <select id="selectUsersByIds" resultType="com.ccb.model.pojo.User">
         SELECT * FROM user WHERE id IN
-        <foreach item="item" index="index" collection="userIds" open="(" separator="," close=")">
-            #{item}
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </select>
     <select id="findNameByID">

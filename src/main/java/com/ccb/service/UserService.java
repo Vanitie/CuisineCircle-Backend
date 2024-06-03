@@ -20,7 +20,7 @@ public interface UserService extends IService<User> {
     void removeMain(Integer id);
 
     void updateMain(User user, List<Picture>pictures);
-    public User getUserByNameAndPassword(String name, String password);
+    public User getUserByNameAndPassword(String userName, String password);
 
 
 

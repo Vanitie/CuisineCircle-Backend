@@ -28,7 +28,7 @@ public class UserForm {
     private String phone;
 
     @NotNull(message = "性别不能为空")
-    private Gender gender;
+    private Boolean gender;
 
     @Past(message = "生日不能是未来的日期")
     private Date birthday;
@@ -42,9 +42,5 @@ public class UserForm {
     private String avatar;
 
     private String description;
-
-    private List<Integer> followUserId;
-
-    private List<Integer> fanUserId;
 
 }

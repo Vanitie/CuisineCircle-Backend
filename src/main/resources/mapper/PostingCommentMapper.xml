@@ -5,19 +5,19 @@
 <mapper namespace="com.ccb.mapper.PostingCommentMapper">
     <!-- 根据帖子ID获取评论ID列表 -->
     <select id="getPostingCommentIdsByPostingId" parameterType="Integer" resultType="java.lang.Integer">
-        SELECT id FROM posting_comments WHERE posting_id = #{postingId}
+        SELECT id FROM posting_comment WHERE posting_id = #{postingId}
     </select>
 
     <!-- 根据用户ID获取评论ID列表 -->
     <select id="getPostingCommentIdsByUserId" parameterType="Integer" resultType="java.lang.Integer">
-        SELECT id FROM posting_comments WHERE user_id = #{userId}
+        SELECT id FROM posting_comment WHERE user_id = #{userId}
     </select>
 
     <!-- 根据评论ID获取评论ID列表（假设获取子评论） -->
     <select id="getPostingCommentIdsByCommentId" parameterType="Integer" resultType="java.lang.Integer">
-        SELECT id FROM posting_comments WHERE comment_id = #{commentId}
+        SELECT id FROM posting_comment WHERE comment_id = #{commentId}
     </select>
     <select id="getUserIdByCommentId" parameterType="Integer" resultType="java.lang.Integer">
-        SELECT user_id FROM posting_comments WHERE id = #{commentId}
+        SELECT user_id FROM posting_comment WHERE id = #{commentId}
     </select>
 </mapper>
