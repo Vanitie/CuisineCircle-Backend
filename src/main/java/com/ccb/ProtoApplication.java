@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.ccb.mapper")
-public class ProtoApptication {
-    public static void main(String[]args){
-        SpringApplication.run(ProtoApptication.class,args);
+public class ProtoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ProtoApplication.class, args);
     }
 }

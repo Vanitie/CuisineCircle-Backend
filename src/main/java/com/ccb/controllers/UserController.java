@@ -19,11 +19,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/detail/{id}")//返回用户详情
-    public R<User> detail(@PathVariable("id")Integer id){
-        log.info("detail:id={}",id);
-        User user=userService.getById(id);
-        return R.success(user);
+    @GetMapping("/detail/{id}")
+    public R<User> detail(@PathVariable("id") Integer id) {
+        log.info("detail:id={}", id);
+        try {
+            User user = userService.getById(id);
+            if (user != null) {
+                return R.success(user);
+            } else {
+                return R.error("用户未找到");
+            }
+        } catch (Exception e) {
+            log.error("获取用户详情时出错: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
     //展示粉丝

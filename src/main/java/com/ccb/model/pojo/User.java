@@ -37,12 +37,6 @@ public class User implements Serializable {
     private String avatar;//头像，存储图片URL
     private String description;
 
-
-    private List<Integer> followUserId;//关注的用户
-    private List<Integer> fanUserId;//粉丝
-
-
-    private List<Posting>postings;//创作的帖子
     private Long preferenceId;
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间
@@ -50,11 +44,5 @@ public class User implements Serializable {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
-    public void setFanUserId(Integer followerId){
-        fanUserId.add(followerId);
-    }
-    public void setFollowUserId(Integer followerId){
-        followUserId.add(followerId);
-    }
 
 }
