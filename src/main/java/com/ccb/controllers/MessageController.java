@@ -3,11 +3,13 @@ package com.ccb.controllers;
 import com.ccb.common.R;
 import com.ccb.model.pojo.Message;
 import com.ccb.service.MessageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
@@ -17,51 +19,114 @@ public class MessageController {
 
     @GetMapping("/all")
     public R<List<Message>> getAllMessages() {
-        return R.success(messageService.getAllMessages());
+        log.info("Fetching all messages");
+        try {
+            List<Message> messages = messageService.getAllMessages();
+            return R.success(messages);
+        } catch (Exception e) {
+            log.error("Error fetching all messages: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
-    @GetMapping("/{userId}/{messageType}")//根据消息类型选择对应的消息返回，1表示点赞，2表示评论，3表示关注，4表示待评价，且未读的在前面
-    public R<List<Message>> getMessagesByType(@PathVariable Integer userId,@PathVariable Integer messageType) {
-        return R.success(messageService.getMessagesByType(userId,messageType));
+    @GetMapping("/{userId}/{messageType}")
+    public R<List<Message>> getMessagesByType(@PathVariable Integer userId, @PathVariable Integer messageType) {
+        log.info("Fetching messages for userId={} and messageType={}", userId, messageType);
+        try {
+            List<Message> messages = messageService.getMessagesByType(userId, messageType);
+            return R.success(messages);
+        } catch (Exception e) {
+            log.error("Error fetching messages by type: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
     @GetMapping("/{id}")
     public R<Message> getMessageById(@PathVariable Integer id) {
-        return R.success(messageService.getMessageById(id));
+        log.info("Fetching message with id={}", id);
+        try {
+            Message message = messageService.getMessageById(id);
+            if (message != null) {
+                return R.success(message);
+            } else {
+                return R.error("消息未找到");
+            }
+        } catch (Exception e) {
+            log.error("Error fetching message by id: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
     @PostMapping("/create")
-    public void createMessage(@RequestBody Message message) {
-        messageService.createMessage(message);
+    public R<Void> createMessage(@RequestBody Message message) {
+        log.info("Creating message: {}", message);
+        try {
+            messageService.createMessage(message);
+            return R.success();
+        } catch (Exception e) {
+            log.error("Error creating message: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
     @PutMapping("/update/{id}")
     public R<Void> updateMessage(@PathVariable Integer id, @RequestBody Message message) {
-        message.setId(id);
-        messageService.updateMessage(message);
-        return R.success();
+        log.info("Updating message with id={}: {}", id, message);
+        try {
+            message.setId(id);
+            messageService.updateMessage(message);
+            return R.success();
+        } catch (Exception e) {
+            log.error("Error updating message: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
-    @GetMapping("/unread/count")//获取未读消息数
-    public R<Integer> countUnreadMessages(@RequestParam Integer userId) {
-        return R.success(messageService.countUnreadMessages(userId));
+    @GetMapping("/unread/count/{userId}")
+    public R<Integer> countUnreadMessages(@PathVariable Integer userId) {
+        log.info("Counting unread messages for userId={}", userId);
+        try {
+            int count = messageService.countUnreadMessages(userId);
+            return R.success(count);
+        } catch (Exception e) {
+            log.error("Error counting unread messages: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
-    @PutMapping("/read/{id}")//根据id设置已读
+    @PutMapping("/read/{id}")
     public R<Void> markMessagesAsReadById(@PathVariable Integer id) {
-        messageService.markMessagesAsReadById(id);
-        return R.success();
+        log.info("Marking message as read with id={}", id);
+        try {
+            messageService.markMessagesAsReadById(id);
+            return R.success();
+        } catch (Exception e) {
+            log.error("Error marking message as read by id: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
-    @PutMapping("/read/{userId}/{messageType}")//根据消息类型设置已读
-    public R<Void> markMessagesAsReadByType(@PathVariable Integer userId,@PathVariable Integer messageType) {
-        messageService.markMessagesAsReadByType(userId,messageType);
-        return R.success();
+    @PutMapping("/read/{userId}/{messageType}")
+    public R<Void> markMessagesAsReadByType(@PathVariable Integer userId, @PathVariable Integer messageType) {
+        log.info("Marking messages as read for userId={} and messageType={}", userId, messageType);
+        try {
+            messageService.markMessagesAsReadByType(userId, messageType);
+            return R.success();
+        } catch (Exception e) {
+            log.error("Error marking messages as read by type: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 
     @DeleteMapping("/delete/{id}")
     public R<Void> deleteMessage(@PathVariable Integer id) {
-        messageService.deleteMessage(id);
-        return R.success();
+        log.info("Deleting message with id={}", id);
+        try {
+            messageService.deleteMessage(id);
+            return R.success();
+        } catch (Exception e) {
+            log.error("Error deleting message: ", e);
+            return R.error("服务器内部错误");
+        }
     }
 }

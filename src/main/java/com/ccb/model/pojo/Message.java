@@ -34,7 +34,7 @@ public class Message implements Serializable {
     private String postingContent;//被点赞或评论的内容
     private String replyContent;//回复内容
 
-    private Boolean read;//是否已读
+    private Boolean isRead;//是否已读
 
 
     @TableField(fill = FieldFill.INSERT)

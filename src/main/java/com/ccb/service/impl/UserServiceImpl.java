@@ -85,7 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getUserByNameAndPassword(String name, String password) {
         QueryWrapper<User> query = new QueryWrapper<>();
-        query.eq("name", name);
+        query.eq("user_name", name);
         query.eq("password", password);
         return userMapper.selectOne(query);
     }

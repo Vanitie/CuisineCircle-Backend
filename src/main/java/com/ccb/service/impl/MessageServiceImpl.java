@@ -53,7 +53,7 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper,Message> imple
     @Override
     public int countUnreadMessages(Integer userId) {
         QueryWrapper<Message> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", userId).eq("read", false);
+        queryWrapper.eq("user_id", userId).eq("is_read", false);
         Long count = messageMapper.selectCount(queryWrapper);
         return count != null ? count.intValue() : 0;
     }
@@ -61,7 +61,7 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper,Message> imple
     @Override
     public void markMessagesAsReadById(Integer id) {
         Message message=messageMapper.selectById(id);
-        message.setRead(true);
+        message.setIsRead(true);
         messageMapper.updateById(message);
     }
 
@@ -71,7 +71,7 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper,Message> imple
         queryWrapper.eq("user_id", userId).eq("message_type", messageType);
         List<Message> messages = messageMapper.selectList(queryWrapper);
         for (Message message : messages) {
-            message.setRead(true);
+            message.setIsRead(true);
             messageMapper.updateById(message);
         }
     }

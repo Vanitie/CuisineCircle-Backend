@@ -5,21 +5,21 @@
 <mapper namespace="com.ccb.mapper.FollowMapper">
     <!-- 查询所有关注者关注的用户ID -->
     <select id="selectFollowIdsByFanId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-        SELECT followId FROM follow WHERE fanId = #{fanId}
+        SELECT follow_id FROM follow WHERE fan_id = #{fanId}
     </select>
 
     <!-- 查询所有关注某用户的关注者ID -->
     <select id="selectFanIdsByFollowId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-        SELECT fanId FROM follow WHERE followId = #{followId}
+        SELECT fan_id FROM follow WHERE follow_id = #{followId}
     </select>
 
     <!-- 添加关注关系 -->
     <insert id="addFollow">
-        INSERT INTO follow (fanId, followId) VALUES (#{fanId}, #{followId})
+        INSERT INTO follow (fan_id, follow_id) VALUES (#{fanId}, #{followId})
     </insert>
 
     <!-- 删除关注关系 -->
     <delete id="deleteFollow">
-        DELETE FROM follow WHERE fanId = #{fanId} AND followId = #{followId}
+        DELETE FROM follow WHERE fan_id = #{fanId} AND follow_id = #{followId}
     </delete>
 </mapper>

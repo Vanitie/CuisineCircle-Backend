@@ -28,7 +28,7 @@ public class User implements Serializable {
     private Integer id;
     private String userName;
     private String password;
-    private Integer phone;//电话号码
+    private String phone;//电话号码
     private Boolean gender;
 
     private Date birthday;
