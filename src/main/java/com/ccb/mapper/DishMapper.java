@@ -14,7 +14,7 @@ public interface DishMapper extends BaseMapper<Dish> {
     
 List<Dish>getAlldishes();
 
-    Dish getDishById(long randomId);
+    Dish getDishById(long randomId);//?
 
 
     Long getMaxDishId();

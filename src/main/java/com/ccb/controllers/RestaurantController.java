@@ -20,7 +20,8 @@ public class RestaurantController {
 
     @Autowired
 private RestaurantService restaurantService;
-
+@Autowired
+private DishService dishService;
 //    @Autowired
 //    private DishService;
 
@@ -55,15 +56,29 @@ private RestaurantService restaurantService;
     }
 
     // 在特定饭店中添加菜品
-    @PostMapping("/{restaurantId}/dish/add")
-    public R<Dish> addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
+@PostMapping("/{restaurantId}/dish/add")
+    public R addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
+        // 从数据库中获取指定ID的餐馆
         Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
-        if (restaurant != null) {
-            Integer restaurant_id = restaurant.getRestaurantId();
-            dish.setRestaurantId(restaurant_id); // 设置菜品所属的饭店
 
-            return R.success();//待修改
+        // 检查餐馆是否存在
+        if (restaurant != null) {
+            // 设置菜品所属的餐馆ID
+            dish.setRestaurantId(restaurant.getRestaurantId());
+
+            // 将菜品添加到餐馆
+
+
+            // 根据添加结果返回不同的响应
+            if (dishService.addDish(dish)) {
+                // 如果添加成功，返回成功的响应
+                return R.success();
+            } else {
+                // 如果添加失败，返回失败的响应
+                return R.error("菜品添加失败");
+            }
         } else {
-            return R.success();//待修改
+            // 如果餐馆不存在，返回失败的响应
+            return R.error("指定的餐馆不存在");
         }
-}}
+    }}
