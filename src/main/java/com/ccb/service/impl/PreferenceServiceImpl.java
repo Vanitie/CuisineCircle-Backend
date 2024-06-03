@@ -45,7 +45,7 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         userDishMenu.setDishId(dishId);
         userDishMenu.setMenuId(menuId);
         userDishMenu.setMenuName(menuName);
-        String menuUrl=dishMapper.getDishById(dishId).getImage();
+        String menuUrl=dishMapper.selectImageById(dishId);
         userDishMenu.setMenuUrl(menuUrl);
         userDishMenuMapper.insert(userDishMenu);
     }
