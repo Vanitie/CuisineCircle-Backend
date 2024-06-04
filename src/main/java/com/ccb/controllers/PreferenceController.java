@@ -22,7 +22,6 @@ public class PreferenceController {
     public R detail(@PathVariable("id") Integer id){
         log.info("preference detail:id={}",id);
         Preference preference=preferenceService.getByUserId(id);
-
         return R.success(preference);
     }
     @GetMapping("/{id}/getMenus")

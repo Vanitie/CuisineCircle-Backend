@@ -8,6 +8,7 @@ import com.ccb.service.RestaurantService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,8 @@ private DishService dishService;
 //    private DishService;
 
     // 获取所有饭店列表,
-    @GetMapping("/Restaurantlist")
+    @GetMapping("/restaurantlist")
+    @Transactional
     public R<List<Restaurant>> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantService.getAllRestaurants();
 
@@ -35,7 +37,7 @@ private DishService dishService;
     }
 
     // 获取特定饭店的详细信息，包括其菜品列表
-@GetMapping("{restaurantId}")
+@GetMapping("/details/{restaurantId}")
     public R<Restaurant> getRestaurantDetails(@PathVariable("restaurantId")Integer restaurant_id) {
         Restaurant restaurant = restaurantService.getRestaurantById(restaurant_id);
         if (restaurant != null) {
@@ -50,7 +52,7 @@ private DishService dishService;
     // 添加新的饭店
     @PostMapping("/add")
     public R<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
-        log.info("dish's id={}",restaurant.getRestaurantId());
+        log.info("restaurant's id={}",restaurant.getRestaurantId());
         restaurantService.save(restaurant);
         return R.success();
     }

@@ -5,15 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.io.Serial;
 
+@TableName("dish_restaurant_association")
 @Data
-@TableName("restaurant")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Restaurant implements Serializable {
+public class DishResaurantAssociation {
+
+    private Integer id;
     private Integer restaurantId;
-    private  String name;
-    private String picUrl;
-    private  Float score;//评分
+    private Integer dishId;
 }

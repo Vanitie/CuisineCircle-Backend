@@ -32,6 +32,7 @@ public class DishController {
         Dish dish= dishService.getById(id);
         return R.success(dish);
     }
+
     @PostMapping("/add")
     public R<Dish> add(@RequestBody Dish dish){
         log.info("dish's id={}",dish.getId());
@@ -62,11 +63,9 @@ public class DishController {
                 .map(Tag::getName)  // 获取每个 Tag 对象的 name 属性
                 .collect(Collectors.toList());  // 收集到 List 中
     }
-
-    public void deleteTags(Integer tagId, Integer dishId
-    ){
-
+@DeleteMapping("/{dishId}/tag/delete")
+    public void deleteTags(@RequestParam Integer tagId, @PathVariable("dishId") Integer dishId){
         tagService.deleteTagFromDish(dishId,tagId);
-
-    }}
+    }
+}
 

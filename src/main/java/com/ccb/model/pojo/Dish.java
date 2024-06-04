@@ -24,7 +24,7 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private String name;//菜品名称
     private BigDecimal price;//菜品价格,使用BigDecimal避免浮点数舍入误差
 
-    private List<String> tags;//菜品标签,在表dish_tag中
+    //private List<String> tags;//菜品标签,在表dish_tag中
     private Float stars;//星级，0-10，每一级表示半颗星
     private String navigationUrl; // 导航地址
 
@@ -52,10 +52,4 @@ public class Dish implements Serializable {//便于持久化存储和传输
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
-
-    @TableField(fill = FieldFill.INSERT)//记录创建人
-    private Long createUserId;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUserId;
 }
