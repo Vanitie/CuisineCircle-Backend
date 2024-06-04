@@ -142,6 +142,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
      */
     @Override
     public String getMenuUrl(Integer userId, Integer menuId){
-        return dishMapper.getDishById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst()).getImage();
+        return dishMapper.selectImageById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst());
     }
 }
