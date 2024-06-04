@@ -29,6 +29,13 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
         return dishMapper.selectList(null);
     }
 
+    @Override
+    public boolean addDish(Dish dish) {
+        return save(dish);
+    }
+
+
+
     public void insertUserDishAssociation(Integer userId, Integer dishId, boolean isEat) {
         UserDishAssociation userDishAssociation = new UserDishAssociation();
         userDishAssociation.setDishId(dishId);
@@ -62,4 +69,5 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
             dishMapper.updateById(dish);
         }
     }
+
 }

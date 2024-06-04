@@ -14,7 +14,7 @@ public interface DishMapper extends BaseMapper<Dish> {
     
 List<Dish>getAlldishes();
 
-    Dish getDishById(long randomId);
+    Dish getDishById(long randomId);//?
 
     @Select("SELECT image FROM dish WHERE id = #{dishId}")
     String selectImageById(Integer dishId);
