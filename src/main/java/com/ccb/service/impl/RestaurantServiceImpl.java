@@ -1,8 +1,9 @@
 package com.ccb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ccb.mapper.DishRestaurantAssociationMapper;
 import com.ccb.mapper.RestaurantMapper;
-import com.ccb.model.pojo.Message;
+import com.ccb.model.pojo.DishResaurantAssociation;
 import com.ccb.model.pojo.Restaurant;
 import com.ccb.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,17 @@ import java.util.*;
 public class RestaurantServiceImpl extends ServiceImpl<RestaurantMapper, Restaurant> implements RestaurantService{
 @Autowired
 private RestaurantMapper restaurantMapper;
-    @Override
-    public boolean save(Restaurant restaurant) {
-        return super.save(restaurant);
-    }
+@Autowired
+DishRestaurantAssociationMapper dishRestaurantAssociationMapper;
 
+@Override
+public void addDish(Integer restaurantId, Integer dishId){
+    DishResaurantAssociation dishResaurantAssociation=new DishResaurantAssociation();
+    dishResaurantAssociation.setDishId(dishId);
+    dishResaurantAssociation.setRestaurantId(restaurantId);
+    dishRestaurantAssociationMapper.insert(dishResaurantAssociation);
+
+}
 
     @Override
     public List<Restaurant> getAllRestaurants() {

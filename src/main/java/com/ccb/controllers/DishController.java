@@ -45,7 +45,7 @@ public class DishController {
     }
 
     @PutMapping("edit")
-    public R<Preference> editpreference(@RequestBody Dish dish){
+    public R<Dish>editdish(@RequestBody Dish dish){
         log.info("edit:preference={}",dish);
 
         dishService.updateById(dish);

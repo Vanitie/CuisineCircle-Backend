@@ -65,20 +65,11 @@ private DishService dishService;
         if (restaurant != null) {
             // 设置菜品所属的餐馆ID
             dish.setRestaurantId(restaurant.getRestaurantId());
-
+         restaurantService.addDish(restaurantId,dish.getId());
             // 将菜品添加到餐馆
 
 
             // 根据添加结果返回不同的响应
-            if (dishService.addDish(dish)) {
-                // 如果添加成功，返回成功的响应
-                return R.success();
-            } else {
-                // 如果添加失败，返回失败的响应
-                return R.error("菜品添加失败");
-            }
-        } else {
-            // 如果餐馆不存在，返回失败的响应
-            return R.error("指定的餐馆不存在");
-        }
-    }}
+
+    }return R.success();}
+}

@@ -38,5 +38,9 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="cuisineback@localhost" uuid="ce82698c-77c8-4135-b4e6-4b0f0d992b76">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
