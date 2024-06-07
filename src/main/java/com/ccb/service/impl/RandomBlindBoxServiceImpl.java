@@ -15,6 +15,7 @@ public class RandomBlindBoxServiceImpl implements RandomBlindBoxService {
     private DishMapper dishMapper;
 
     // 生成随机菜品
+    @Override
     public Dish getRandomDish() {
         // 获取最大菜品ID
         Long maxId = dishMapper.getMaxDishId();
@@ -29,6 +30,6 @@ public class RandomBlindBoxServiceImpl implements RandomBlindBoxService {
         long randomId = random.nextInt(maxId.intValue()) + 1;
 
         // 根据随机ID从数据库中获取菜品对象
-        return dishMapper.getDishById(randomId);
+        return dishMapper.selectById(randomId);
     }
 }

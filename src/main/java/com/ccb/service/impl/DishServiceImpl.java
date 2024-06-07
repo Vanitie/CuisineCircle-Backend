@@ -8,6 +8,7 @@ import com.ccb.mapper.UserDishAssociationMapper;
 import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.UserDishAssociation;
 import com.ccb.service.DishService;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -69,5 +70,7 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
             dishMapper.updateById(dish);
         }
     }
+
+
 
 }

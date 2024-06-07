@@ -19,6 +19,8 @@ List<Dish>getAlldishes();
     @Select("SELECT image FROM dish WHERE id = #{dishId}")
     String selectImageById(Integer dishId);
 
+    // 获取最大菜品ID
+    @Select("SELECT MAX(id) FROM dish")
     Long getMaxDishId();
 
     void updatEatingInfo(Integer dishId);
