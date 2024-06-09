@@ -8,7 +8,9 @@ import com.ccb.service.MessageService;
 import com.ccb.service.PostingService;
 import com.ccb.service.PostingCommentService;
 import com.ccb.service.UserService;
+import com.ccb.vo.PostingCommentVo;
 import com.ccb.vo.PostingVo;
+import com.ccb.vo.UserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -123,13 +125,20 @@ public class PostingController {
         return R.success(result);
     }
     @GetMapping("/posting/{postingId}/getCommentByPosting")
-    public R<List<PostingComment>> getCommentsByPosting(@PathVariable Integer postingId) {
-        List<PostingComment>result=new ArrayList<>();
+    public R<List<PostingCommentVo>> getCommentsByPosting(@PathVariable Integer postingId) {
+        List<PostingCommentVo>result=new ArrayList<>();
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByPostingId(postingId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
             postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
-            result.add(postingComment);
+            PostingCommentVo postingCommentVo=new PostingCommentVo();
+            postingCommentVo.setPostingComment(postingComment);
+            Integer userId=postingComment.getUserId();
+            UserVo userVo=new UserVo();
+            User user=userService.getByUserId(userId);
+            BeanUtils.copyProperties(user,userVo);
+            postingCommentVo.setUserVo(userVo);
+            result.add(postingCommentVo);
         }
         return R.success(result);
     }
