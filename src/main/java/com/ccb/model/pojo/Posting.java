@@ -30,6 +30,15 @@ public class Posting implements Serializable {
     private Long preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
+    private String pictureUrl1;
+    private String pictureUrl2;
+    private String pictureUrl3;
+    private String pictureUrl4;
+    private String pictureUrl5;
+    private String pictureUrl6;
+    private String pictureUrl7;
+    private String pictureUrl8;
+    private String pictureUrl9;
 
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间

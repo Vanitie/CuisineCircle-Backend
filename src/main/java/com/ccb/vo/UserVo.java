@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class UserVo {
     private Integer id;
-    private String name;
+    private String userName;
     private String description;
-    private List pictures;
+    private String avatar;
 }

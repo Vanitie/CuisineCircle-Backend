@@ -22,6 +22,15 @@ public class PostingVo {
 
     private Integer userId;
     private String content;
+    private String pictureUrl1;
+    private String pictureUrl2;
+    private String pictureUrl3;
+    private String pictureUrl4;
+    private String pictureUrl5;
+    private String pictureUrl6;
+    private String pictureUrl7;
+    private String pictureUrl8;
+    private String pictureUrl9;
 
 
     private Integer likes;//点赞数
