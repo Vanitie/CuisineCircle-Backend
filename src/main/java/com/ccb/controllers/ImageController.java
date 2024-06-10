@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -35,7 +34,7 @@ public class ImageController {
 
         try {
             // 保存文件到服务器文件系统
-            byte[] bytes = file.getBytes();
+            //byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
             //Files.write(path, bytes);
 
