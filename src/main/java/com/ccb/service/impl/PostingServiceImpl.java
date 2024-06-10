@@ -33,6 +33,11 @@ public  class PostingServiceImpl extends ServiceImpl<PostingMapper, Posting> imp
         postingMapper.insert(posting);
     }
 
+    @Override
+    public Integer getMaxPostingId() {
+        return postingMapper.getMaxId();
+    }
+
     public void addFollow(Integer fanId, Integer followerId){
         followMapper.addFollow(fanId, followerId);
     }

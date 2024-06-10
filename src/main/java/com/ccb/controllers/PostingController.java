@@ -218,8 +218,21 @@ public class PostingController {
         }
         return R.success();
     }
-
-
+    @GetMapping("/posting/getSeveral")
+    public R<List<PostingVo>> getSeveralPosting(@RequestParam Integer nowCount){
+        List<PostingVo>result=new ArrayList<>();
+        Integer maxId=postingMapper.getMaxId();
+        maxId-=(nowCount-1)*10;
+        for(int i=maxId;i>=maxId-10;i--){
+            if(i<=0)break;
+            PostingVo postingVo=new PostingVo();
+            Posting posting=postingService.getPostingById(i);
+            BeanUtils.copyProperties(posting,postingVo);
+            postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
+            result.add(postingVo);
+        }
+        return R.success(result);
+    }
     @PostMapping("/posting")
     public R<User> addCommentToPosting( @RequestBody PostingComment comment) {
         postingCommentService.addComment(comment);
