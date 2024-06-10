@@ -44,7 +44,7 @@ public class ImageController {
 
             imageService.save(image);
 
-            return R.success();
+            return R.success(path.toString());
         } catch (IOException e) {
             e.printStackTrace();
             return R.success("上传失败");
