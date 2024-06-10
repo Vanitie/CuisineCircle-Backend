@@ -221,7 +221,7 @@ public class PostingController {
     @GetMapping("/posting/getSeveral")
     public R<List<PostingVo>> getSeveralPosting(@RequestParam Integer nowCount){
         List<PostingVo>result=new ArrayList<>();
-        Integer maxId=postingMapper.getMaxId();
+        Integer maxId=postingService.getMaxPostingId();
         maxId-=(nowCount-1)*10;
         for(int i=maxId;i>=maxId-10;i--){
             if(i<=0)break;
