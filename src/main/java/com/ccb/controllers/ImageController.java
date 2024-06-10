@@ -24,7 +24,7 @@ public class ImageController {
     @Value("${upload.dir}")
     private String uploadDir;
     @PostMapping("/upload")
-    public R<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public R<String> handleFileUpload(@RequestBody MultipartFile file) {
         if (file.isEmpty()) {
             return R.success("文件为空");
         }
