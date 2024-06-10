@@ -137,6 +137,8 @@ public class PostingController {
             UserVo userVo=new UserVo();
             User user=userService.getByUserId(userId);
             BeanUtils.copyProperties(user,userVo);
+            List<Integer>newlist=likeMapper.findAllLikeComment(i);
+            postingCommentVo.setLikeUser(newlist);
             postingCommentVo.setUserVo(userVo);
             result.add(postingCommentVo);
         }
