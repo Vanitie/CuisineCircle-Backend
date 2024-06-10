@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,41 +23,48 @@ import java.nio.file.Paths;
 public class ImageController {
     @Autowired
     ImageService imageService;
+
     @Value("${upload.dir}")
     private String uploadDir;
+
     @PostMapping("/upload")
-    public R<String> handleFileUpload(@RequestBody MultipartFile file) {
-        if (file.isEmpty()) {
-            return R.success("文件为空");
+    public R<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            return R.error("文件为空");
         }
 
         try {
             // 保存文件到服务器文件系统
             byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
-            Files.write(path, bytes);
+            //Files.write(path, bytes);
 
             // 创建Image对象并保存到数据库
             Image image = new Image();
             image.setName(file.getOriginalFilename());
             image.setType(file.getContentType());
             image.setData(file.getBytes());
-            image.setUrl(path.toString()); // 设置文件路径
+            image.setUrl(path.toString().replace("\\", "/")); // 将反斜杠替换为斜杠
 
             imageService.save(image);
 
             return R.success(path.toString());
         } catch (IOException e) {
-            e.printStackTrace();
-            return R.success("上传失败");
+            log.error("文件上传失败", e);
+            return R.error("上传失败");
         }
     }
+
     @GetMapping("/getImage")
     public R<Image> getImage(@RequestParam("url") String url) {
-        Image image = imageService.getImageByUrl(url);
-        return R.success(image);
+        try {
+            String decodedUrl = URLDecoder.decode(url, StandardCharsets.UTF_8.toString());
+            Image image = imageService.getImageByUrl(decodedUrl);
+            return R.success(image);
+        } catch (IOException e) {
+            log.error("URL 解码失败", e);
+            return R.error("URL 解码失败");
+        }
     }
-
-
 }
 
