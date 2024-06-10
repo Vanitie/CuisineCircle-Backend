@@ -222,15 +222,20 @@ public class PostingController {
     public R<List<PostingVo>> getSeveralPosting(@RequestParam Integer nowCount){
         List<PostingVo>result=new ArrayList<>();
         Integer maxId=postingService.getMaxPostingId();
-        maxId-=(nowCount-1)*10;
-        for(int i=maxId;i>=maxId-10;i--){
+
+        int count=nowCount*10;
+        int i=maxId;
+        while(count>0){
             if(i<=0)break;
             PostingVo postingVo=new PostingVo();
             Posting posting=postingService.getPostingById(i);
             BeanUtils.copyProperties(posting,postingVo);
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
             result.add(postingVo);
+            i--;
+            count--;
         }
+
         return R.success(result);
     }
     @PostMapping("/posting")
