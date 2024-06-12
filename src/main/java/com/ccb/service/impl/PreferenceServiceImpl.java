@@ -6,6 +6,7 @@ import com.ccb.common.R;
 import com.ccb.mapper.DishMapper;
 import com.ccb.mapper.PreferenceMapper;
 import com.ccb.mapper.UserDishMenuMapper;
+import com.ccb.mapper.UserMapper;
 import com.ccb.model.pojo.Preference;
 import com.ccb.model.pojo.UserDishMenu;
 import com.ccb.service.PreferenceService;
@@ -22,6 +23,8 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     UserDishMenuMapper userDishMenuMapper;
     @Autowired
     DishMapper dishMapper;
+    @Autowired
+    UserMapper userMapper;
 
     @Override
     public void changeMenuName(Integer userId, Integer menuId,String menuName){
@@ -45,8 +48,10 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         userDishMenu.setDishId(dishId);
         userDishMenu.setMenuId(menuId);
         userDishMenu.setMenuName(menuName);
+
         String menuUrl=dishMapper.selectImageById(dishId);
         userDishMenu.setMenuUrl(menuUrl);
+
         userDishMenuMapper.insert(userDishMenu);
     }
     public Preference getByUserId(Integer userId) {
@@ -58,27 +63,25 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     }
 
     //加新菜单，菜单编号顺序从2开始递增，但并无实际意义（删除可以删除其中任意一个）上限不超过10000(MAX_MENUS)
-    public R<Preference> creatMenu(Integer userId, String menuName) {
-        Preference preference = preferenceMapper.selectByUserId(userId);
-        Integer index = preference.getMenusIndex();
-
-        //限制菜单数量
-        if(index>MAX_MENUS)
-        {
-            List<Map<Integer, String>> menuList= getMenus(userId);
-            Set<Integer> usedMenuIds = new HashSet<>();
-            for (Map<Integer, String> menuMap : menuList) {
-                usedMenuIds.add(menuMap.keySet().iterator().next());
-            }
-            index = findUnusedIndex(usedMenuIds);
+    public R creatMenu(Integer userId, String menuName) {
+        // Fetch existing menuIds for the user
+        List<Map<Integer, String>> existingMenus = getMenus(userId);
+        Set<Integer> existingMenuIds = new HashSet<>();
+        for (Map<Integer, String> menu : existingMenus) {
+            existingMenuIds.addAll(menu.keySet());
         }
-        if(index==-1)
-            return R.error("创建菜单失败-菜单上限");
-        preference.setMenusIndex(index+1);
-        insertUserDishLike(userId,-1,preference.getMenusIndex(),menuName);  //存储在关联表中初始菜单的dishId=-1
 
-        preferenceMapper.updateById(preference);
-        return R.success(preference);
+        // Generate a random menuId that does not conflict with existing menuIds
+        Random rand = new Random();
+        int randomMenuId;
+        do {
+            randomMenuId = rand.nextInt(10000 - 2 + 1) + 2; // 生成2到10000之间的随机数
+        } while (existingMenuIds.contains(randomMenuId));
+
+        // Insert the new menu
+        insertUserDishLike(userId, -1, randomMenuId, menuName); // 存储在关联表中初始菜单的dishId=-1
+
+        return R.success();
     }
     private int findUnusedIndex(Set<Integer> usedMenuIds) {
         for (int i = 2; i <= MAX_MENUS; i++) {
