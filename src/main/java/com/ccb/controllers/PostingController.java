@@ -39,6 +39,8 @@ public class PostingController {
     private ReadHistoryMapper readHistoryMapper;
     @Autowired
     private RestaurantService restaurantService;
+    @Autowired
+    private DishService dishService;
 
 
     @PostMapping("/posting/{fanId}/follow")
@@ -236,9 +238,10 @@ public class PostingController {
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
             User user=userService.getByUserId(postingVo.getUserId());
             postingVo.setUser(user);
-            Restaurant restaurant=restaurantService.getRestaurantById(posting.getPreferenceId());
+            Restaurant restaurant=restaurantService.getRestaurantById(posting.getRestaurantId());
             postingVo.setRestaurant(restaurant);
-
+            Dish dish=dishService.getById(posting.getDishId());
+            postingVo.setDish(dish);
             result.add(postingVo);
             i--;
             count--;
