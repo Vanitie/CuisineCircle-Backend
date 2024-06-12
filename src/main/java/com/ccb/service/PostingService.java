@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public interface PostingService {
     Posting getPostingById(Integer id);
     void addPosting(Posting posting);
-
+    Integer getMaxPostingId();
 
     void addFollow(Integer fanId, Integer followerId);
     void deleteFollow(Integer fanId, Integer followerId);

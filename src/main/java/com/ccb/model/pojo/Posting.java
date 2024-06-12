@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @TableName("posting")
 @Data
@@ -25,11 +23,23 @@ public class Posting implements Serializable {
 
     private Integer userId;
     private String content;
+    private Integer restaurantId;//change
+    private Integer dishId;//change
 
 
-    private Long preferenceId;
+
+    private Integer preferenceId;//change
     private boolean isPrePreference;
     private boolean isPrePictures;
+    private String pictureUrl1;
+    private String pictureUrl2;
+    private String pictureUrl3;
+    private String pictureUrl4;
+    private String pictureUrl5;
+    private String pictureUrl6;
+    private String pictureUrl7;
+    private String pictureUrl8;
+    private String pictureUrl9;
 
 
     @TableField(fill = FieldFill.INSERT)//记录创建时间

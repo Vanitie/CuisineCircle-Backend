@@ -1,8 +1,6 @@
 package com.ccb.model.pojo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.ccb.model.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +23,7 @@ public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String userName;
     private String password;

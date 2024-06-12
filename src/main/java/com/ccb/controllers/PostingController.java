@@ -4,11 +4,10 @@ package com.ccb.controllers;
 import com.ccb.common.R;
 import com.ccb.mapper.*;
 import com.ccb.model.pojo.*;
-import com.ccb.service.MessageService;
-import com.ccb.service.PostingService;
-import com.ccb.service.PostingCommentService;
-import com.ccb.service.UserService;
+import com.ccb.service.*;
+import com.ccb.vo.PostingCommentVo;
 import com.ccb.vo.PostingVo;
+import com.ccb.vo.UserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +37,10 @@ public class PostingController {
     private UserMapper userMapper;
     @Autowired
     private ReadHistoryMapper readHistoryMapper;
+    @Autowired
+    private RestaurantService restaurantService;
+    @Autowired
+    private DishService dishService;
 
 
     @PostMapping("/posting/{fanId}/follow")
@@ -123,13 +126,23 @@ public class PostingController {
         return R.success(result);
     }
     @GetMapping("/posting/{postingId}/getCommentByPosting")
-    public R<List<PostingComment>> getCommentsByPosting(@PathVariable Integer postingId) {
-        List<PostingComment>result=new ArrayList<>();
+    public R<List<PostingCommentVo>> getCommentsByPosting(@PathVariable Integer postingId) {
+        List<PostingCommentVo>result=new ArrayList<>();
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByPostingId(postingId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
-            result.add(postingComment);
+
+            PostingCommentVo postingCommentVo=new PostingCommentVo();
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
+            postingCommentVo.setPostingComment(postingComment);
+            Integer userId=postingComment.getUserId();
+            UserVo userVo=new UserVo();
+            User user=userService.getByUserId(userId);
+            BeanUtils.copyProperties(user,userVo);
+            List<Integer>newlist=likeMapper.findAllLikeComment(i);
+            postingCommentVo.setLikeUser(newlist);
+            postingCommentVo.setUserVo(userVo);
+            result.add(postingCommentVo);
         }
         return R.success(result);
     }
@@ -139,7 +152,8 @@ public class PostingController {
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByCommentId(commentId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
             result.add(postingComment);
         }
         return R.success(result);
@@ -163,7 +177,7 @@ public class PostingController {
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByUserId(userId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
             result.add(postingComment);
         }
         return R.success(result);
@@ -209,8 +223,32 @@ public class PostingController {
         }
         return R.success();
     }
+    @GetMapping("/posting/getSeveral")
+    public R<List<PostingVo>> getSeveralPosting(@RequestParam Integer nowCount){
+        List<PostingVo>result=new ArrayList<>();
+        Integer maxId=postingService.getMaxPostingId();
 
+        int count=nowCount*10;
+        int i=maxId;
+        while(count>0){
+            if(i<=0)break;
+            PostingVo postingVo=new PostingVo();
+            Posting posting=postingService.getPostingById(i);
+            BeanUtils.copyProperties(posting,postingVo);
+            postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
+            User user=userService.getByUserId(postingVo.getUserId());
+            postingVo.setUser(user);
+            Restaurant restaurant=restaurantService.getRestaurantById(posting.getRestaurantId());
+            postingVo.setRestaurant(restaurant);
+            Dish dish=dishService.getById(posting.getDishId());
+            postingVo.setDish(dish);
+            result.add(postingVo);
+            i--;
+            count--;
+        }
 
+        return R.success(result);
+    }
     @PostMapping("/posting")
     public R<User> addCommentToPosting( @RequestBody PostingComment comment) {
         postingCommentService.addComment(comment);

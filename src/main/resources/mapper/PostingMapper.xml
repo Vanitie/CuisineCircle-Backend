@@ -9,4 +9,7 @@
     <select id="getUserIdByPostingId" parameterType="Integer" resultType="java.lang.Integer">
         SELECT user_id FROM posting WHERE id = #{postingId}
     </select>
+    <select id="getMaxId"  resultType="java.lang.Integer">
+        SELECT max(id) FROM posting
+    </select>
 </mapper>
