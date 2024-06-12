@@ -1,5 +1,6 @@
 package com.ccb.vo;
 
+import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.Restaurant;
 import com.ccb.model.pojo.User;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,7 @@ public class PostingVo {
     private boolean isPrePreference;
     private boolean isPrePictures;
     private Restaurant restaurant;
+    private Dish dish;
     private User user;
 
 

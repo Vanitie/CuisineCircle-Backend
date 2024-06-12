@@ -23,10 +23,12 @@ public class Posting implements Serializable {
 
     private Integer userId;
     private String content;
+    private Integer restaurantId;//change
+    private Integer dishId;//change
 
 
 
-    private Integer preferenceId;
+    private Integer preferenceId;//change
     private boolean isPrePreference;
     private boolean isPrePictures;
     private String pictureUrl1;
