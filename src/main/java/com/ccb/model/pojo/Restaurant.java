@@ -16,4 +16,5 @@ public class Restaurant implements Serializable {
     private  String name;
     private String picUrl;
     private  Float score;//评分
+    private  String restaurantAddress;
 }

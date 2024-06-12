@@ -275,6 +275,16 @@ public class PostingController {
 
     }
 
-
+       @GetMapping("?comment/{dishId}/getCommentByDishId")
+     public R<List<PostingComment>>getCommentByDishId(@PathVariable Integer dishId){
+        List<PostingComment>result=new ArrayList<>();
+        List<Integer>commentIds=postingCommentMapper.getPostingCommentsIdsByDishId(dishId);
+            for(Integer commentId:commentIds){
+            PostingComment postingComment=postingCommentService.getPostingCommentById(commentId);
+            //获取点赞数方法目前似乎不用
+                result.add(postingComment);
+            }
+            return  R.success(result);
+       }
 
 }

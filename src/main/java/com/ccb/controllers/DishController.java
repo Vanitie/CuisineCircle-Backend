@@ -27,7 +27,7 @@ public class DishController {
 
 
     @GetMapping("/detail/{id}")
-    public R detail(@PathVariable("id") Integer id){
+    public R<Dish>detail(@PathVariable("id") Integer id){
         log.info("dish detail:id={}",id);
         Dish dish= dishService.getById(id);
         return R.success(dish);
