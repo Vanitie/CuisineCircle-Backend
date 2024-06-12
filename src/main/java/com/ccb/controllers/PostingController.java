@@ -130,9 +130,9 @@ public class PostingController {
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByPostingId(postingId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+
             PostingCommentVo postingCommentVo=new PostingCommentVo();
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
             postingCommentVo.setPostingComment(postingComment);
             Integer userId=postingComment.getUserId();
             UserVo userVo=new UserVo();
