@@ -167,6 +167,8 @@ public class PostingController {
             PostingVo postingVo=new PostingVo();
             BeanUtils.copyProperties(posting,postingVo);
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
+            postingVo.setUser(userService.getByUserId(posting.getUserId()));
+            postingVo.setDish(dishService.getById(posting.getDishId()));
             result.add(postingVo);
         }
         return R.success(result);
