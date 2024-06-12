@@ -1,5 +1,7 @@
 package com.ccb.vo;
 
+import com.ccb.model.pojo.Restaurant;
+import com.ccb.model.pojo.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,12 +28,14 @@ public class PostingVo {
     private String pictureUrl8;
     private String pictureUrl9;
 
-
+    private Integer restaurantId;
     private Integer likes;//点赞数
 
     private Long preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
+    private Restaurant restaurant;
+    private User user;
 
 
     private Timestamp createTime;

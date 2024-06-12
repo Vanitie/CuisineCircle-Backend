@@ -4,10 +4,7 @@ package com.ccb.controllers;
 import com.ccb.common.R;
 import com.ccb.mapper.*;
 import com.ccb.model.pojo.*;
-import com.ccb.service.MessageService;
-import com.ccb.service.PostingService;
-import com.ccb.service.PostingCommentService;
-import com.ccb.service.UserService;
+import com.ccb.service.*;
 import com.ccb.vo.PostingCommentVo;
 import com.ccb.vo.PostingVo;
 import com.ccb.vo.UserVo;
@@ -40,6 +37,8 @@ public class PostingController {
     private UserMapper userMapper;
     @Autowired
     private ReadHistoryMapper readHistoryMapper;
+    @Autowired
+    private RestaurantService restaurantService;
 
 
     @PostMapping("/posting/{fanId}/follow")
@@ -235,6 +234,11 @@ public class PostingController {
             Posting posting=postingService.getPostingById(i);
             BeanUtils.copyProperties(posting,postingVo);
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
+            User user=userService.getByUserId(postingVo.getUserId());
+            postingVo.setUser(user);
+            Restaurant restaurant=restaurantService.getRestaurantById(postingVo.getRestaurantId());
+            postingVo.setRestaurant(restaurant);
+
             result.add(postingVo);
             i--;
             count--;
