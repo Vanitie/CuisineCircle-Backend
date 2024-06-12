@@ -236,7 +236,7 @@ public class PostingController {
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
             User user=userService.getByUserId(postingVo.getUserId());
             postingVo.setUser(user);
-            Restaurant restaurant=restaurantService.getRestaurantById(postingVo.getRestaurantId());
+            Restaurant restaurant=restaurantService.getRestaurantById(posting.getPreferenceId());
             postingVo.setRestaurant(restaurant);
 
             result.add(postingVo);

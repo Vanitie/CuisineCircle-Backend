@@ -28,10 +28,10 @@ public class PostingVo {
     private String pictureUrl8;
     private String pictureUrl9;
 
-    private Integer restaurantId;
+
     private Integer likes;//点赞数
 
-    private Long preferenceId;
+    private Integer preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
     private Restaurant restaurant;
