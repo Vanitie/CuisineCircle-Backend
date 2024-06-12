@@ -235,6 +235,7 @@ public class PostingController {
             PostingVo postingVo=new PostingVo();
             Posting posting=postingService.getPostingById(i);
             BeanUtils.copyProperties(posting,postingVo);
+            postingVo.setCommentCount(postingMapper.getCommentCountByPostingId(posting.getId()));
             postingVo.setLikes(likeMapper.getLikeCountFromPosting(posting.getId()));
             User user=userService.getByUserId(postingVo.getUserId());
             postingVo.setUser(user);
