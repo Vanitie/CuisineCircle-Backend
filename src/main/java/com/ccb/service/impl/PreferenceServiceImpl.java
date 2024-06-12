@@ -138,6 +138,15 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     @Override
     public void addToSelectMenu(Integer userId,Integer menuId,Integer dishId){
         String menuName=userDishMenuMapper.selectMenuNameByUserIdAndMenuId(userId, menuId);
+        if(menuName==null) {
+            if (menuId == 1) {
+                addToLkeMenu(userId, dishId);
+                menuName="我喜欢的菜";
+            }
+            else if(menuId==0)
+                addToDisLkeMenu(userId,dishId);
+                menuName="黑名单";
+        }
         insertUserDishLike(userId,dishId,menuId,menuName);
     }
     /*
