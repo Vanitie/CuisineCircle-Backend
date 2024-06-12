@@ -132,6 +132,7 @@ public class PostingController {
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
             postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
             PostingCommentVo postingCommentVo=new PostingCommentVo();
+            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
             postingCommentVo.setPostingComment(postingComment);
             Integer userId=postingComment.getUserId();
             UserVo userVo=new UserVo();
@@ -150,7 +151,8 @@ public class PostingController {
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByCommentId(commentId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
             result.add(postingComment);
         }
         return R.success(result);
@@ -174,7 +176,7 @@ public class PostingController {
         List<Integer>nowlist=postingCommentMapper.getPostingCommentIdsByUserId(userId);
         for(Integer i:nowlist){
             PostingComment postingComment=postingCommentService.getPostingCommentById(i);
-            postingComment.setLikes(likeMapper.getLikeCountFromPosting(postingComment.getId()));
+            postingComment.setLikes(likeMapper.getLikeCountFromComment(postingComment.getId()));
             result.add(postingComment);
         }
         return R.success(result);
