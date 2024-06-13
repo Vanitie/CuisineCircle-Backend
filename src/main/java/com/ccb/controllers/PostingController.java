@@ -193,6 +193,7 @@ public class PostingController {
             postingVo.setUser(userService.getByUserId(posting.getUserId()));
             postingVo.setDish(dishService.getById(posting.getDishId()));
             postingVo.setCommentCount(postingMapper.getCommentCountByPostingId(posting.getId()));
+            postingVo.setLikeUser(likeMapper.findAllPostingLike(posting.getId()));
             result.add(postingVo);
         }
         return R.success(result);
@@ -277,7 +278,7 @@ public class PostingController {
             Dish dish=dishService.getById(posting.getDishId());
             postingVo.setDish(dish);
             postingVo.setLikeUser(likeMapper.findAllPostingLike(posting.getId()));
-            postingVo.setCommentCount(postingMapper.getCommentCountByPostingId(posting.getId()));
+
             result.add(postingVo);
             i--;
             count--;
