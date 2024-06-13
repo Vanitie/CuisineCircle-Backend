@@ -26,10 +26,10 @@ List<Dish>getAlldishes();
 
     void updatEatingInfo(Integer dishId);
 
-    @Select("SELECT AVG(stars)FROM dish WHERE dish_id=#{dishId}")
+    @Select("SELECT AVG(stars)FROM dish WHERE id=#{dishId}")
     Float getAverageStarsByDishId(@Param("dishId")Integer dishId);
 
-    @Update("UPDATE dish SET stars =#{stars},eatNumber=#{eatNumber} WHERE id =#{dishId}")
+    @Update("UPDATE dish SET stars =#{stars},eat_number=#{eatNumber} WHERE id =#{dishId}")
     void updateDishStarsWithEatNumber(@Param("dishId") Integer dishId,
                                       @Param("stars")Float stars,
                                       @Param("eatNumber")Integer eatNumber);
