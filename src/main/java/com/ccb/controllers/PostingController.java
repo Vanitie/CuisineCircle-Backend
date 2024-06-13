@@ -86,7 +86,8 @@ public class PostingController {
         readHistory.setPostingId(posting.getId());
         readHistory.setUserId(posting.getUserId());
         readHistoryMapper.insert(readHistory);
-        dishService.updateDishStars(posting.getDishId(),posting.getStars());
+        if(posting.getDishId()!=null&&posting.getStars()!=null){
+        dishService.updateDishStars(posting.getDishId(),posting.getStars());}
 
 
         return R.success();
@@ -263,7 +264,7 @@ public class PostingController {
         Integer maxId=postingService.getMaxPostingId();
 
         int count=nowCount*10;
-        int i=maxId;
+        Integer i=maxId;
         while(count>0){
             if(i<=0)break;
             PostingVo postingVo=new PostingVo();

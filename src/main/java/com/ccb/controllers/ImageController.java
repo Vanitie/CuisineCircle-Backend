@@ -46,7 +46,7 @@ public class ImageController {
 
 
             imageService.save(image);
-
+            image.setData(null);
             return R.success(image);
         } catch (IOException e) {
             log.error("文件上传失败", e);

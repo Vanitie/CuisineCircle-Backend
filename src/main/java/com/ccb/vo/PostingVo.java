@@ -39,7 +39,7 @@ public class PostingVo {
     private Restaurant restaurant;
     private Dish dish;
     private User user;
-    private float stars;
+    private Float stars;
     List<Integer> likeUser;
     private Timestamp createTime;
     private Timestamp updateTime;
