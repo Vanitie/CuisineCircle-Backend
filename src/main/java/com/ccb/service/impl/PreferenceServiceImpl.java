@@ -49,7 +49,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         queryWrapper.eq("user_id",userId).eq("menu_id",menuId).eq("dish_id",dishId);
         if(userDishMenuMapper.selectCount(queryWrapper)>=1){
             userDishMenuMapper.delete(queryWrapper);
-            insertUserDishLike(userId,dishId,menuId, userDishMenuMapper.selectMenuNameByUserIdAndMenuId(userId,menuId));
         }
     }
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
@@ -161,10 +160,13 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
             if (menuId == 1) {
                 addToLkeMenu(userId, dishId);
                 menuName="我喜欢的菜";
+                return;
             }
-            else if(menuId==0)
-                addToDisLkeMenu(userId,dishId);
-                menuName="黑名单";
+            else if(menuId==0) {
+                addToDisLkeMenu(userId, dishId);
+                menuName = "黑名单";
+                return;
+            }
         }
         insertUserDishLike(userId,dishId,menuId,menuName);
     }
