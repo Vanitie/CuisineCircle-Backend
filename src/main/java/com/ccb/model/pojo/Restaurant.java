@@ -14,7 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant implements Serializable {
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer restaurantId;
     private  String name;
     private String picUrl;
