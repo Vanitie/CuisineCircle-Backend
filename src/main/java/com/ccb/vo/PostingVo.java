@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -38,8 +39,8 @@ public class PostingVo {
     private Restaurant restaurant;
     private Dish dish;
     private User user;
-
-
+    private float stars;
+    List<Integer> likeUser;
     private Timestamp createTime;
     private Timestamp updateTime;
 }

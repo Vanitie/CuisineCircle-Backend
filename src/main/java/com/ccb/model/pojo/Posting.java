@@ -20,7 +20,7 @@ public class Posting implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;//主键
-
+    private float stars;
     private Integer userId;
     private String content;
     private Integer restaurantId;//change
