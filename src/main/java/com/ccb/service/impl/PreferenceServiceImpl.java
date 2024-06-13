@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Preference> implements PreferenceService {
@@ -43,16 +44,36 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
     public static final Integer MAX_MENUS = 10000;
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
+        // 创建原始记录
         UserDishMenu userDishMenu = new UserDishMenu();
         userDishMenu.setUserId(userId);
         userDishMenu.setDishId(dishId);
         userDishMenu.setMenuId(menuId);
         userDishMenu.setMenuName(menuName);
-
-        String menuUrl=dishMapper.selectImageById(dishId);
+        userDishMenu.setCopy(false); // 原始记录标记为 false
+        String menuUrl = dishMapper.selectImageById(dishId);
         userDishMenu.setMenuUrl(menuUrl);
 
+        // 插入原始记录
         userDishMenuMapper.insert(userDishMenu);
+
+        // 创建副本记录
+        UserDishMenu copy = new UserDishMenu();
+        copy.setUserId(-1);
+        copy.setDishId(dishId);
+        copy.setMenuId(menuId);
+        copy.setMenuName(menuName);
+        copy.setMenuUrl(menuUrl);
+        copy.setCopy(true); // 副本记录标记为 true
+
+        // 插入副本记录
+        userDishMenuMapper.insert(copy);
+    }
+    public Integer getIdByMenu(Integer userId,Integer menuId){
+        QueryWrapper<UserDishMenu> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userId)
+                    .eq("menu_id",menuId);
+        return userDishMenuMapper.selectList(queryWrapper).getFirst().getId();
     }
     public Preference getByUserId(Integer userId) {
         return preferenceMapper.selectByUserId(userId);
@@ -103,8 +124,10 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         List<UserDishMenu> userDishMenuList = userDishMenuMapper.selectList(null);
 
         List<UserDishMenu> filteredList = userDishMenuList.stream()
-                .filter(menu -> menu.getUserId().equals(userId))
-                .toList();
+                .filter(menu -> menu.getUserId() != null && menu.getUserId().equals(userId))
+                .filter(menu -> menu.getMenuId() != null && menu.getMenuId() > 1)
+                .sorted(Comparator.comparing(UserDishMenu::getId).reversed())
+                .collect(Collectors.toCollection(ArrayList::new)); // Collect to a mutable list
 
         List<Map<Integer, String>> menuList = new ArrayList<>();
         for (UserDishMenu menu : filteredList) {
@@ -112,8 +135,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
             menuMap.put(menu.getMenuId(), menu.getMenuName());
             menuList.add(menuMap);
         }
-        //降序排列
-        menuList.sort(Comparator.comparing(entry -> entry.keySet().iterator().next()));
 
         return menuList;
     }
@@ -156,4 +177,24 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     public String getMenuUrl(Integer userId, Integer menuId){
         return dishMapper.selectImageById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst());
     }
+
+    public Integer getMenuIdByMenuName(int userId,String menuName){
+        QueryWrapper<UserDishMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId)
+                .eq("menu_name", menuName);
+        return userDishMenuMapper.selectList(queryWrapper).getFirst().getMenuId();
+    }
+    //1、克隆菜单
+    public void cloneMenu(Integer curUserId, Integer cloneUserId, Integer menuId){
+       List<Integer>cloneDishesId =  getMenuDishes(cloneUserId,menuId);
+
+       creatMenu(curUserId,userDishMenuMapper.selectMenuNameByUserIdAndMenuId(cloneUserId,menuId));
+
+       String menuName=userDishMenuMapper.selectMenuNameByUserIdAndMenuId(cloneUserId,menuId);
+       for(Integer dishId:cloneDishesId){
+            addToSelectMenu(curUserId,getMenuIdByMenuName(curUserId,menuName),dishId);
+       }
+    }
+    //2、检索最新加菜的菜单  在creatMenu中实现
+    //3、userId=-1的菜单池
 }
