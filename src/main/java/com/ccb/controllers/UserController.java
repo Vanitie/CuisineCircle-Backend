@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccb.common.R;
 import com.ccb.form.UserForm;
 import com.ccb.model.pojo.User;
+import com.ccb.service.ImageService;
 import com.ccb.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -19,6 +20,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    ImageService imageService;
 
     @GetMapping("/detail/{id}")
     public R<User> detail(@PathVariable("id") Integer id) {
@@ -175,7 +179,6 @@ public class UserController {
             return R.error("服务器内部错误");
         }
     }
-
 
     @DeleteMapping("/delete")
     public R<Void> deleteUser(@RequestBody UserForm userForm) {

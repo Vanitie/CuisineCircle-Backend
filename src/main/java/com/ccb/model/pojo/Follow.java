@@ -1,8 +1,6 @@
 package com.ccb.model.pojo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Follow {
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private Integer fanId;//关注者id
     private Integer followId;//被关注者id
