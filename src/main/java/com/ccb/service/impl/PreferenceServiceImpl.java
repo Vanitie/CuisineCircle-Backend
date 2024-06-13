@@ -8,6 +8,7 @@ import com.ccb.mapper.PreferenceMapper;
 import com.ccb.mapper.UserDishMenuMapper;
 import com.ccb.mapper.UserMapper;
 import com.ccb.model.pojo.Preference;
+import com.ccb.model.pojo.User;
 import com.ccb.model.pojo.UserDishMenu;
 import com.ccb.service.PreferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,16 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     }
 
     public static final Integer MAX_MENUS = 10000;
+    public void checkDishInMenu(Integer userId,Integer dishId,Integer menuId){
+        QueryWrapper<UserDishMenu> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userId).eq("menu_id",menuId).eq("dish_id",dishId);
+        if(userDishMenuMapper.selectCount(queryWrapper)>=1){
+            userDishMenuMapper.delete(queryWrapper);
+            insertUserDishLike(userId,dishId,menuId, userDishMenuMapper.selectMenuNameByUserIdAndMenuId(userId,menuId));
+        }
+    }
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
+        checkDishInMenu(userId,dishId,menuId);
         // 创建原始记录
         UserDishMenu userDishMenu = new UserDishMenu();
         userDishMenu.setUserId(userId);
@@ -56,18 +66,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
         // 插入原始记录
         userDishMenuMapper.insert(userDishMenu);
-
-        // 创建副本记录
-        UserDishMenu copy = new UserDishMenu();
-        copy.setUserId(-1);
-        copy.setDishId(dishId);
-        copy.setMenuId(menuId);
-        copy.setMenuName(menuName);
-        copy.setMenuUrl(menuUrl);
-        copy.setCopy(true); // 副本记录标记为 true
-
-        // 插入副本记录
-        userDishMenuMapper.insert(copy);
     }
     public Integer getIdByMenu(Integer userId,Integer menuId){
         QueryWrapper<UserDishMenu> queryWrapper=new QueryWrapper<>();

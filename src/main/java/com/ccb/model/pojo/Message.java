@@ -1,8 +1,6 @@
 package com.ccb.model.pojo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,7 @@ public class Message implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;//主键
     private Integer messageType;//消息类型，1表示点赞，2表示评论，3表示关注，4表示待评价
     private Integer userId;//接受消息者

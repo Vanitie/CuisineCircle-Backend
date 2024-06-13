@@ -1,8 +1,6 @@
 package com.ccb.model.pojo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Dish implements Serializable {//便于持久化存储和传输
     private static final long serialVersionUID = 1L;
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;//主键
     private String name;//菜品名称
     private BigDecimal price;//菜品价格,使用BigDecimal避免浮点数舍入误差
