@@ -56,18 +56,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
         // 插入原始记录
         userDishMenuMapper.insert(userDishMenu);
-
-        // 创建副本记录
-        UserDishMenu copy = new UserDishMenu();
-        copy.setUserId(-1);
-        copy.setDishId(dishId);
-        copy.setMenuId(menuId);
-        copy.setMenuName(menuName);
-        copy.setMenuUrl(menuUrl);
-        copy.setCopy(true); // 副本记录标记为 true
-
-        // 插入副本记录
-        userDishMenuMapper.insert(copy);
     }
     public Integer getIdByMenu(Integer userId,Integer menuId){
         QueryWrapper<UserDishMenu> queryWrapper=new QueryWrapper<>();
