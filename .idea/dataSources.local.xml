@@ -22,6 +22,7 @@
     </data-source>
     <data-source name="cuisine@localhost" uuid="260844d5-1380-4b90-99bf-1bcc8fe93b53">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
       <schema-mapping />
     </data-source>
     <data-source name="cuisine@localhost" uuid="0aa03414-f1f9-405c-95b9-bcb5d441beee">

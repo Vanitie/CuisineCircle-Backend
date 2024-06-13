@@ -27,7 +27,7 @@ public class ImageController {
     private String uploadDir;
 
     @PostMapping("/upload")
-    public R<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public R<Image> handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (file == null || file.isEmpty()) {
             return R.error("文件为空");
         }
@@ -43,11 +43,11 @@ public class ImageController {
             image.setName(file.getOriginalFilename());
             image.setType(file.getContentType());
             image.setData(file.getBytes());
-            image.setUrl(path.toString().replace("\\", "/")); // 将反斜杠替换为斜杠
+
 
             imageService.save(image);
-
-            return R.success(path.toString());
+            image.setData(null);
+            return R.success(image);
         } catch (IOException e) {
             log.error("文件上传失败", e);
             return R.error("上传失败");
@@ -55,15 +55,9 @@ public class ImageController {
     }
 
     @GetMapping("/getImage")
-    public R<Image> getImage(@RequestParam("url") String url) {
-        try {
-            String decodedUrl = URLDecoder.decode(url, StandardCharsets.UTF_8.toString());
-            Image image = imageService.getImageByUrl(decodedUrl);
-            return R.success(image);
-        } catch (IOException e) {
-            log.error("URL 解码失败", e);
-            return R.error("URL 解码失败");
-        }
+    public R<Image> getImage(@RequestParam("id") Integer id) {
+        return R.success(imageService.getById(id));
+
     }
 }
 

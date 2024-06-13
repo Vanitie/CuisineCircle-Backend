@@ -16,4 +16,6 @@ public interface PostingMapper extends BaseMapper<Posting> {
 
     Integer getMaxId();
 
+    List<Integer> getPostingIdByDishId(Integer dishId);
+
 }
