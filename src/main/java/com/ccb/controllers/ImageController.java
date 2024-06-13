@@ -23,8 +23,6 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
-    @Value("${upload.dir}")
-    private String uploadDir;
 
     @PostMapping("/upload")
     public R<Image> handleFileUpload(@RequestParam("file") MultipartFile file) {
@@ -35,7 +33,7 @@ public class ImageController {
         try {
             // 保存文件到服务器文件系统
             //byte[] bytes = file.getBytes();
-            Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
+            //Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
             //Files.write(path, bytes);
 
             // 创建Image对象并保存到数据库
