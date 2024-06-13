@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.SequencedCollection;
 
 @Service
 public class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper, PostingComment> implements PostingCommentService {
@@ -50,7 +51,6 @@ public class PostingCommentServiceImpl extends ServiceImpl<PostingCommentMapper,
     public Integer getCommentSenderByCommentId(Integer commentId){
         return postingCommentMapper.getUserIdByCommentId(commentId);
     }
-
 
 
 

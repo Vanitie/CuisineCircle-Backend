@@ -18,12 +18,15 @@ public class Posting implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;//主键
-
+    private Float stars;
     private Integer userId;
     private String content;
+    private Integer restaurantId;//change
+    private Integer dishId;//change
 
 
-    private Long preferenceId;
+
+    private Integer preferenceId;//change
     private boolean isPrePreference;
     private boolean isPrePictures;
     private String pictureUrl1;

@@ -1,10 +1,14 @@
 package com.ccb.vo;
 
+import com.ccb.model.pojo.Dish;
+import com.ccb.model.pojo.Restaurant;
+import com.ccb.model.pojo.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,14 +30,17 @@ public class PostingVo {
     private String pictureUrl8;
     private String pictureUrl9;
 
-
+    private Integer commentCount;
     private Integer likes;//点赞数
 
-    private Long preferenceId;
+    private Integer preferenceId;
     private boolean isPrePreference;
     private boolean isPrePictures;
-
-
+    private Restaurant restaurant;
+    private Dish dish;
+    private User user;
+    private Float stars;
+    List<Integer> likeUser;
     private Timestamp createTime;
     private Timestamp updateTime;
 }

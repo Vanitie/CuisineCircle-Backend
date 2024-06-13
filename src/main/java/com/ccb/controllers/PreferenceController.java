@@ -62,7 +62,11 @@ public class PreferenceController {
         preferenceService.addToSelectMenu(id,menuId,dishId);
         return R.success();
     }
-
+    @PostMapping("/{curUserId}/cloneMenu")//克隆他人菜单
+    public R cloneMenu(@PathVariable Integer curUserId,@RequestParam Integer cloneUserId,@RequestParam Integer menuId){
+        preferenceService.cloneMenu(curUserId, cloneUserId, menuId);
+        return R.success();
+    }
     //删除菜单
     @DeleteMapping("/{id}/deleteMenu")///deleteMenu?userId=1&menuId=2
     public R deleteMenu(@PathVariable Integer id, @RequestParam Integer menuId) {

@@ -59,7 +59,7 @@ private DishService dishService;
 
     // 在特定饭店中添加菜品
 @PostMapping("/{restaurantId}/dish/add")
-    public R addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
+    public R<Restaurant> addDishToRestaurant(@PathVariable("restaurantId") Integer restaurantId, @RequestBody Dish dish) {
         // 从数据库中获取指定ID的餐馆
         Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
 

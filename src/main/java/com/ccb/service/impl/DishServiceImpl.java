@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -71,6 +72,21 @@ public class DishServiceImpl extends ServiceImpl<DishMapper,Dish>implements Dish
         }
     }
 
+    public Float getStarById(Integer dishId) {
+       // Float averageStars=
 
+         return  dishMapper.getAverageStarsByDishId(dishId);
 
+           // return Optional.ofNullable(averageStars)
+                //    .map(stars->String.format("%.1f",stars))
+                  //  .orElse("暂无人评分");//将评分格式化以一位小数字符串输出，若无评分则显示暂无人评分
+    }
+    public void updateDishStars(Integer dishId,Float newRating){
+        Dish dish =dishMapper.selectById(dishId);
+        Float currentAvgStars=dish.getStars();
+        Integer currentRatingCount=dish.getEatNumber();
+        Integer newRatingCount=currentRatingCount+1;
+        Float newAvgStars=(currentAvgStars*currentRatingCount+newRating)/newRatingCount;
+        dishMapper.updateDishStarsWithEatNumber(dishId,newAvgStars,newRatingCount);
+    }
 }

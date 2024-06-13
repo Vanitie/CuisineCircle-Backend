@@ -15,4 +15,5 @@ public interface PostingCommentMapper extends BaseMapper<PostingComment> {
     List<Integer>getPostingCommentIdsByCommentId(@Param("commentId")Integer commentId);
     Integer getUserIdByCommentId(@Param("commentId") Integer commentId);
 
+    List<Integer> getPostingCommentsIdsByDishId(@Param("dishId")Integer dishId);
 }
