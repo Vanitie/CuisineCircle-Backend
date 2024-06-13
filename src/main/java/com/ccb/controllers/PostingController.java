@@ -249,6 +249,11 @@ public class PostingController {
         return R.success();
 
     }
+    @GetMapping("/posting/getNowPosting")
+    public R<Integer> getNowPosting(){
+        Integer result=postingService.getMaxPostingId()+1;
+        return R.success(result);
+    }
     @DeleteMapping("/comment/{commentId}/deleteComment")
     public R<User>deleteComment(@PathVariable Integer commentId){
         List<Integer>allToDelete=new ArrayList<>();
