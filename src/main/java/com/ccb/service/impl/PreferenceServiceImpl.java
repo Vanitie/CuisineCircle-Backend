@@ -115,22 +115,35 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
     }
 
+
     //返回个人菜单信息
     @Override
     public List<Map<Integer, String>> getMenus(Integer userId) {
+        // 获取所有用户菜品菜单
         List<UserDishMenu> userDishMenuList = userDishMenuMapper.selectList(null);
 
+        // 筛选符合条件的菜单项
         List<UserDishMenu> filteredList = userDishMenuList.stream()
                 .filter(menu -> menu.getUserId() != null && menu.getUserId().equals(userId))
                 .filter(menu -> menu.getMenuId() != null && menu.getMenuId() > 1)
                 .sorted(Comparator.comparing(UserDishMenu::getId).reversed())
-                .collect(Collectors.toCollection(ArrayList::new)); // Collect to a mutable list
+                .collect(Collectors.toCollection(ArrayList::new)); // 收集到一个可变列表中
 
+        // 使用一个Set来跟踪已经处理过的menuId
+        Set<Integer> seenMenuIds = new HashSet<>();
         List<Map<Integer, String>> menuList = new ArrayList<>();
+
         for (UserDishMenu menu : filteredList) {
+            // 如果menuId已经在seenMenuIds中，跳过
+            if (seenMenuIds.contains(menu.getMenuId())) {
+                continue;
+            }
+
+            // 如果menuId不在seenMenuIds中，加入到menuList并添加到seenMenuIds中
             Map<Integer, String> menuMap = new HashMap<>();
             menuMap.put(menu.getMenuId(), menu.getMenuName());
             menuList.add(menuMap);
+            seenMenuIds.add(menu.getMenuId());
         }
 
         return menuList;
