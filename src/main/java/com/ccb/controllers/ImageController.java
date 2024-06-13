@@ -25,7 +25,7 @@ public class ImageController {
 
 
     @PostMapping("/upload")
-    public R<Image> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public R<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (file == null || file.isEmpty()) {
             return R.error("文件为空");
         }
@@ -44,8 +44,8 @@ public class ImageController {
 
 
             imageService.save(image);
-            image.setData(null);
-            return R.success(image);
+            return R.success(String.valueOf(image.getId()));
+
         } catch (IOException e) {
             log.error("文件上传失败", e);
             return R.error("上传失败");
@@ -53,8 +53,8 @@ public class ImageController {
     }
 
     @GetMapping("/getImage")
-    public R<Image> getImage(@RequestParam("id") Integer id) {
-        return R.success(imageService.getById(id));
+    public R<Image> getImage(@RequestParam("id") String id) {
+        return R.success(imageService.getById(Integer.parseInt(id)));
 
     }
 }
