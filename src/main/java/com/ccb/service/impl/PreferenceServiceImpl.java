@@ -187,8 +187,20 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     待完成任务：得到菜单图片：菜单一号菜品的图片  ps:在insertUserDishLike中完成
      */
     @Override
-    public String getMenuUrl(Integer userId, Integer menuId){
-        return dishMapper.selectImageById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst());
+    public String getMenuUrl(Integer userId, Integer menuId) {
+        // 获取用户和菜单ID对应的所有菜品
+        List<Integer> dishIds = userDishMenuMapper.selectDishesByUserIdAndMenuId(userId, menuId);
+
+        // 遍历所有菜品ID，直到找到非空的图片URL
+        for (Integer dishId : dishIds) {
+            String imageUrl = dishMapper.selectImageById(dishId);
+            if (imageUrl != null) {
+                return imageUrl;
+            }
+        }
+
+        // 如果没有找到任何非空的图片URL，返回"无菜单图片"
+        return "无菜单图片";
     }
 
     public Integer getMenuIdByMenuName(int userId,String menuName){
