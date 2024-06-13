@@ -20,44 +20,44 @@ import java.nio.file.Paths;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-    @Autowired
-    ImageService imageService;
-
-    @Value("${upload.dir}")
-    private String uploadDir;
-
-    @PostMapping("/upload")
-    public R<Image> handleFileUpload(@RequestParam("file") MultipartFile file) {
-        if (file == null || file.isEmpty()) {
-            return R.error("文件为空");
-        }
-
-        try {
-            // 保存文件到服务器文件系统
-            //byte[] bytes = file.getBytes();
-            Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
-            //Files.write(path, bytes);
-
-            // 创建Image对象并保存到数据库
-            Image image = new Image();
-            image.setName(file.getOriginalFilename());
-            image.setType(file.getContentType());
-            image.setData(file.getBytes());
-
-
-            imageService.save(image);
-            image.setData(null);
-            return R.success(image);
-        } catch (IOException e) {
-            log.error("文件上传失败", e);
-            return R.error("上传失败");
-        }
-    }
-
-    @GetMapping("/getImage")
-    public R<Image> getImage(@RequestParam("id") Integer id) {
-        return R.success(imageService.getById(id));
-
-    }
+//    @Autowired
+//    ImageService imageService;
+//
+//    @Value("${upload.dir}")
+//    private String uploadDir;
+//
+//    @PostMapping("/upload")
+//    public R<Image> handleFileUpload(@RequestParam("file") MultipartFile file) {
+//        if (file == null || file.isEmpty()) {
+//            return R.error("文件为空");
+//        }
+//
+//        try {
+//            // 保存文件到服务器文件系统
+//            //byte[] bytes = file.getBytes();
+//            Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
+//            //Files.write(path, bytes);
+//
+//            // 创建Image对象并保存到数据库
+//            Image image = new Image();
+//            image.setName(file.getOriginalFilename());
+//            image.setType(file.getContentType());
+//            image.setData(file.getBytes());
+//
+//
+//            imageService.save(image);
+//            image.setData(null);
+//            return R.success(image);
+//        } catch (IOException e) {
+//            log.error("文件上传失败", e);
+//            return R.error("上传失败");
+//        }
+//    }
+//
+//    @GetMapping("/getImage")
+//    public R<Image> getImage(@RequestParam("id") Integer id) {
+//        return R.success(imageService.getById(id));
+//
+//    }
 }
 

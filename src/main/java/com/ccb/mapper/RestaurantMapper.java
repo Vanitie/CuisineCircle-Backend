@@ -10,6 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface RestaurantMapper extends BaseMapper<Restaurant> {
-    @Select("SELECT * FROM restaurant WHERE restaurantId = #{restaurant_id}")
+    @Select("SELECT * FROM restaurant WHERE restaurantId = #{restaurantId}")
     Restaurant selectByRestaurantId(@Param("restaurantId") Integer restaurantId);
 }

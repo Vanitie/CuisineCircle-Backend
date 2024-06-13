@@ -38,8 +38,8 @@ private DishService dishService;
 
     // 获取特定饭店的详细信息，包括其菜品列表
 @GetMapping("/details/{restaurantId}")
-    public R<Restaurant> getRestaurantDetails(@PathVariable("restaurantId")Integer restaurant_id) {
-        Restaurant restaurant = restaurantService.getRestaurantById(restaurant_id);
+    public R<Restaurant> getRestaurantDetails(@PathVariable("restaurantId")Integer restaurantId) {
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
         if (restaurant != null) {
             return R.success(restaurant) ;
         } else {
