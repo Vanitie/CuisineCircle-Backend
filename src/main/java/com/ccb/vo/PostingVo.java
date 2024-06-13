@@ -29,7 +29,7 @@ public class PostingVo {
     private String pictureUrl8;
     private String pictureUrl9;
 
-
+    private Integer commentCount;
     private Integer likes;//点赞数
 
     private Integer preferenceId;
