@@ -14,8 +14,8 @@ public interface DishService  extends IService<Dish>{
 boolean addDish(Dish dish);
 
     Float getStarById(Integer dishId);
-    void updateDishStars(Integer dishId,Float newRating);
 
-        //List<Dish>getAllDishes();这里在实现类里没有实现暂时只能先注释掉了
+
+    //List<Dish>getAllDishes();这里在实现类里没有实现暂时只能先注释掉了
 }
 

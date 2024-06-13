@@ -78,5 +78,10 @@ public class DishController {
         return dishService.getStarById(dishId);
     }
 
+    @PostMapping("{id}/update")
+    public R<String>updateStars(@PathVariable Integer dishId,@RequestBody Float newRating){
+        dishService.updateDishStars(dishId,newRating);
+        return R.success();
+    }
 }
 
