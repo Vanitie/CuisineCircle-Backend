@@ -5,6 +5,7 @@ import com.ccb.model.pojo.Dish;
 import com.ccb.model.pojo.Preference;
 import com.ccb.model.pojo.Tag;
 import com.ccb.service.DishService;
+import com.ccb.service.PostingService;
 import com.ccb.service.TagService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class DishController {
     TagService tagService;
     @Autowired
      DishService dishService;
+    @Autowired
+    PostingService postingService;
 
 
     @GetMapping("/detail/{id}")
@@ -46,7 +49,7 @@ public class DishController {
 
     @PutMapping("edit")
     public R<Preference> editpreference(@RequestBody Dish dish){
-        log.info("edit:preference={}",dish);
+        log.info("edit:dish={}",dish);
 
         dishService.updateById(dish);
 
@@ -68,5 +71,12 @@ public class DishController {
 
         tagService.deleteTagFromDish(dishId,tagId);
 
-    }}
+    }
+    @GetMapping("/{id}/stars")
+      public    Float getDishStars(@PathVariable("id") Integer dishId){
+        log.info("dish");
+        return dishService.getStarById(dishId);
+    }
+
+}
 

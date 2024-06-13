@@ -6,6 +6,7 @@ import com.ccb.model.pojo.PostingComment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -24,4 +25,12 @@ List<Dish>getAlldishes();
     Long getMaxDishId();
 
     void updatEatingInfo(Integer dishId);
+
+    @Select("SELECT AVG(stars)FROM dish WHERE dish_id=#{dishId}")
+    Float getAverageStarsByDishId(@Param("dishId")Integer dishId);
+
+    @Update("UPDATE dish SET stars =#{stars},eatNumber=#{eatNumber} WHERE id =#{dishId}")
+    void updateDishStarsWithEatNumber(@Param("dishId") Integer dishId,
+                                      @Param("stars")Float stars,
+                                      @Param("eatNumber")Integer eatNumber);
 }

@@ -25,7 +25,7 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private BigDecimal price;//菜品价格,使用BigDecimal避免浮点数舍入误差
 
     //private List<String> tags;//菜品标签,在表dish_tag中
-    private Float stars;//星级，0-10，每一级表示半颗星
+    private Float stars ;  //星级，0-10，每一级表示半颗星
     private String navigationUrl; // 导航地址
 
     private Integer restaurantId;//判断所属店铺 外键
@@ -33,6 +33,7 @@ public class Dish implements Serializable {//便于持久化存储和传输
     private String description;//描述信息
 
     private Integer eatNumber;//记录吃过的人数
+    public Float newRating;//新录入评分
     /*
    // private Integer spicy; // 辣度，0-10
     //private Integer health; // 健康程度，0-10，清淡到油腻
