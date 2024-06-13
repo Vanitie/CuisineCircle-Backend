@@ -49,7 +49,6 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
         queryWrapper.eq("user_id",userId).eq("menu_id",menuId).eq("dish_id",dishId);
         if(userDishMenuMapper.selectCount(queryWrapper)>=1){
             userDishMenuMapper.delete(queryWrapper);
-            insertUserDishLike(userId,dishId,menuId, userDishMenuMapper.selectMenuNameByUserIdAndMenuId(userId,menuId));
         }
     }
     public void insertUserDishLike(Integer userId, Integer dishId, Integer menuId,String menuName) {
