@@ -115,22 +115,35 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
 
     }
 
+
     //返回个人菜单信息
     @Override
     public List<Map<Integer, String>> getMenus(Integer userId) {
+        // 获取所有用户菜品菜单
         List<UserDishMenu> userDishMenuList = userDishMenuMapper.selectList(null);
 
+        // 筛选符合条件的菜单项
         List<UserDishMenu> filteredList = userDishMenuList.stream()
                 .filter(menu -> menu.getUserId() != null && menu.getUserId().equals(userId))
                 .filter(menu -> menu.getMenuId() != null && menu.getMenuId() > 1)
                 .sorted(Comparator.comparing(UserDishMenu::getId).reversed())
-                .collect(Collectors.toCollection(ArrayList::new)); // Collect to a mutable list
+                .collect(Collectors.toCollection(ArrayList::new)); // 收集到一个可变列表中
 
+        // 使用一个Set来跟踪已经处理过的menuId
+        Set<Integer> seenMenuIds = new HashSet<>();
         List<Map<Integer, String>> menuList = new ArrayList<>();
+
         for (UserDishMenu menu : filteredList) {
+            // 如果menuId已经在seenMenuIds中，跳过
+            if (seenMenuIds.contains(menu.getMenuId())) {
+                continue;
+            }
+
+            // 如果menuId不在seenMenuIds中，加入到menuList并添加到seenMenuIds中
             Map<Integer, String> menuMap = new HashMap<>();
             menuMap.put(menu.getMenuId(), menu.getMenuName());
             menuList.add(menuMap);
+            seenMenuIds.add(menu.getMenuId());
         }
 
         return menuList;
@@ -174,8 +187,20 @@ public class PreferenceServiceImpl extends ServiceImpl<PreferenceMapper, Prefere
     待完成任务：得到菜单图片：菜单一号菜品的图片  ps:在insertUserDishLike中完成
      */
     @Override
-    public String getMenuUrl(Integer userId, Integer menuId){
-        return dishMapper.selectImageById(userDishMenuMapper.selectDishesByUserIdAndMenuId(userId,menuId).getFirst());
+    public String getMenuUrl(Integer userId, Integer menuId) {
+        // 获取用户和菜单ID对应的所有菜品
+        List<Integer> dishIds = userDishMenuMapper.selectDishesByUserIdAndMenuId(userId, menuId);
+
+        // 遍历所有菜品ID，直到找到非空的图片URL
+        for (Integer dishId : dishIds) {
+            String imageUrl = dishMapper.selectImageById(dishId);
+            if (imageUrl != null) {
+                return imageUrl;
+            }
+        }
+
+        // 如果没有找到任何非空的图片URL，返回"无菜单图片"
+        return "无菜单图片";
     }
 
     public Integer getMenuIdByMenuName(int userId,String menuName){
